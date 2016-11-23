@@ -3,6 +3,7 @@ layout: page
 title: Project
 permalink: projects/sample-project/
 subtitle: Sample project
+published: false
 ---
 
 ## Liber orbes sternentemque nunc mortalia rotae supplex

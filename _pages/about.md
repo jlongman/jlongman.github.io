@@ -4,6 +4,7 @@ title: About
 subtitle: I am a smart heading.
 desc: About me.
 permalink: /about/
+published: false
 ---
 
 <div class="pretty-links">
