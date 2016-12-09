@@ -61,7 +61,7 @@ I was arguing on the internet and wanted to make a point using Wikipedia.  There
 
 
 
-<form id="mailto" action="mailto:jl.anchors@gmail.com" method="post" enctype="text/plain" >
+<form id="mailto" action="mailto://jl.anchors@gmail.com" method="post" enctype="text/plain" >
 Email:<input type="text" name="Email"/><br/>
 Website:<textarea name="Website" cols="65" rows="2"/><br/>
 Problem:<textarea name="Problem" cols="65" rows="10"/><br/>
