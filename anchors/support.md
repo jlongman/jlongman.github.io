@@ -9,7 +9,7 @@ comments: true
 
 # Frequently Asked Questions
 
-Well, not yet.  Jump to [email](#mailto) support.
+If you don't find the answers below, jump to [email](#mailto) support.
 
 ## What is an anchor?
 
@@ -52,6 +52,10 @@ The anchor has also been added to the **Anchors** app as the most recent item an
 The **Anchors** app keeps a history of the number of times you've shared 
 the link through the Anchors app, as well as when you first browsed there, and when you
 last shared it. It also shows a preview of the anchor.
+
+## Why!?
+
+I was arguing on the internet and wanted to make a point using Wikipedia.  There was an entire section dedicated to what I was trying to prove and I couldn't get iOS to show me the link - something trivial on a desktop using Inspect Element and other tools.  So I scratched that itch with this.  Also I learned Swift and iOS development doing this.
 
 # Email support form
 

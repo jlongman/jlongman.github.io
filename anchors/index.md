@@ -14,7 +14,7 @@ from the **Anchors** app.
 
 **Anchors** is a free-as-in-beer app made for iOS.  It is not (yet?) free-as-in-speech.  
 
-It is currently in beta.
+[![Anchors in the App Store]({{ site.url }}/assets/img/Download_on_the_App_Store_Badge_US-UK_135x40.svg)](https://appsto.re/i67f3d8)
 
 # **Anchors** Support
 
