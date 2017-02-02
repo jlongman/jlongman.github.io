@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Anchors
+title: Anchors - Deep linking in web pages
 status: draft
 published: true
 comments: false

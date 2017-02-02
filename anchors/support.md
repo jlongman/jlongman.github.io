@@ -59,7 +59,7 @@ I was arguing on the internet and wanted to make a point using Wikipedia.  There
 
 # Email support form
 
-
+You can always email me at jl\<dot>anchors\<at>gmail\<dot>com
 
 <form id="mailto" action="mailto://jl.anchors@gmail.com" method="post" enctype="text/plain" >
 Email:<input type="text" name="Email"/><br/>
