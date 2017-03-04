@@ -1,0 +1,87 @@
+---
+layout: post
+title: Installing Eclipse 3.2m4
+categories:  Code Geekery
+published: 2006-01-05 02:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Installing Eclipse 3.2m4</h1>
+				<p>I was chatting with Nic (hi!) and he was asking if I new about <a href="https://web.archive.org/web/20070207231528/http://www.jetbrains.com/">IntelliJ</a> feature <em>X</em> in <a href="https://web.archive.org/web/20070207231528/http://www.eclipse.org/">Eclipse</a>, which prompted me to install eclipse 3.2M4.  Except that when I added my eclipse_extensions directory - a third-party directory for holding plugins to <a href="https://web.archive.org/web/20070207231528/http://simplygenius.com/geekblog/2005/04/08/1112982083849.html">ease transitions when you upgrade your eclipse</a> - Eclipse wouldn't start!  As a matter of fact, it would disappear without even showing a UI error message! </p>
+<p>The error message in the <a href="https://web.archive.org/web/20070207231528/http://www.eclipse.org/eclipse/faq/eclipse-faq.html#users_11.5">metadata log</a> complained about the actionSet in the legacy action set, but didn't even mention which plugin was guilty!    I thought maybe some setting from my 3.1 workspace was conflicting, so I started a new workspace...  Same problem, crash without notification.  Second, I renamed the eclipse extensions directory so it wouldn't find the plugins at all.   Eclipse worked, no problem.  </p>
+<p>Okay, maybe I chose the wrong root in that directory, since I had an outer eclipse_extensions directory containing a directory named eclipse.  Crash, no worky.  Hmm.  I poked around in the eclipse plugin configurations and noticed that it had parented them the same, even though I had offered the inner and outer directories as separate options, so that definitely wasn't it, but there were no further insights in there except that it had only registered two of the plugins in my extensions directly.  Clearly, there's a plugin in my extensions screwing things up.</p>
+<p>So I went into the eclipse_extensions plugin, noticed one named 'Dashboard' that I couldn't remember being able to access its functionality, ever, deleted it.  Wam, it worked.  </p>
+<p>There are two eclipse plugins with dashboard in the name that I saw off-hand, one for working with <a href="https://web.archive.org/web/20070207231528/http://jira.atlassian.com/">Jira</a>, my favourite (quality!) issue tracking software, which sounds cool and I would like to use, but I couldn't remember having installed it;  and another for working with <a href="https://web.archive.org/web/20070207231528/http://www.cruisecontrol.net/">cruisecontrol</a>, my 'favourite' (i.e., only one used) continuous integration platform.   The second sounds more likely.</p>
+<p>So we'll have to see how it goes...</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Installing Eclipse 3.2m4," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>01.05.06 / 2pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-624.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-5532">
+			<cite>
+				<span class="author">Geoff</span>
+				<span class="date">01.05.06 / 4pm</span>
+			</cite>
+			<div class="content">
+								<p>Jira sucks.</p>
+<p><a href="https://web.archive.org/web/20070207231528/http://www.fastbugtrack.com/" rel="nofollow">www.fastbugtrack.com</a></p>
+<p>:-()
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-5551">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">01.06.06 / 8pm</span>
+			</cite>
+			<div class="content">
+								<p>Wa, where'd my reply go?  Essentially, Jira has a few things going for it, splash maybe, and fastbugtrack looks very similar, maybe better charting and reports. </p>
+<p>Although I have to say Jira's built-in <a href="index146c-48.html?p=186" rel="nofollow">reports</a> are pretty spiffy.  I've got similar ones that break down bugs by modules, etc, that are VERY effective at providing a functional view of which bugs are where in what priority.  Functional in that you can work on level 4 bugs in the User Manager module exclusively if you want.  </p>
+<p>It's spiffy.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-5552">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">01.06.06 / 8pm</span>
+			</cite>
+			<div class="content">
+								<p>Oh, also, I stopped using eclipse 3.2m4 — it's hard to say whether its one of my plugins or eclipse, but either way, when an editor trashes your textfile without undo...</p>
+<p>Plonk!</p>
+<p>(well, at least when you're in a high stress situation like I am in now)
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

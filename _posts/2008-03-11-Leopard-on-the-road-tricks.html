@@ -1,0 +1,100 @@
+---
+layout: post
+title: Leopard on the road tricks
+categories:  Gadget-o-rama
+published: 2008-03-11 02:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Leopard on the road tricks</h1>
+				<p>I'm in Spain, working on-site at a client's location, and they've got very particular settings - fixed IPs, a proxy you must go through, and NO wifi.  This forced me to figure how to get Network Locations working, Firefox to use the OSX Proxy settings, and finally how to tether my iPhone's Wifi to the Mac's Ethernet — OH! and getting better wifi stability:</p>
+<ol>
+<li><strong>Network Locations</strong> are good for managing your TCP/IP settings per location.  I have, for example, my worksite as a separate location - fixed IP, fixed DNS, specific proxy settings.  I have another setting for home, which is DHCP and no proxy, automagic all the way.  When I switch them, everything just works.  My Windows co-worker kills himself at how easy it is for me.</li>
+<p/>
+<li>I just found this - <strong><a href="https://web.archive.org/web/20080407180310/http://blog.curthread.org/projects/systemproxy">System Proxy</a></strong> - get Firefox to respect your Mac's proxy settings, so what I said above is actually true - <em>everything</em> just works.  Without this plugin, when you use the network Locations, Firefox doesn't respect the network settings and you have to open up its proxy settings also.  (Why is this a plugin?)</li>
+<p/>
+<li>If you use Internet Connection Sharing in order to tether your iPhone to your Ethernet's web access via an adhoc Wifi connection, I have found the system setup, but it's really particular.  The proxy can be the trickiest part, but I only have one use case so I haven't figured out whether it's necessary or not.  So ignoring passing the proxy to the iPhone, the basic steps (from memory) are:
+<ol>
+<li>On your Mac, create an adhoc network, with a specific name and password, from the Airport menu item</li>
+<p/>
+<li>On your Mac, go to the System Preferences, and Sharing.  Choose share your Ethernet.  Over Airport.  Click Airport Options... Add the network name and password for the adhoc network.  </li>
+<p/>
+<li>From your iPhone, join the adhoc network</li>
+<p/>
+<li>On your Mac, click on Internet Sharing on the left to start Sharing, the Accept message.  I've found on the iPhone it will ask me for the password for the network again. If this happens, and I don't know why, go to the next step</li>
+<p/>
+<li>On your Mac, Click on Internet Sharing again to turn it off.  Click on it right away to turn it back on, accept, blah blah</li>
+<p/>
+<li>It should work now - after you turn it off and you want to use it again, you will need to turn Internet Sharing on-off-on again for it to work, in my experience</li>
+<p/>
+</ol>
+<p>You can now surf the web from your iPhone using your desktop.  (If you don't have data services, you'll want to do this)</p>
+</li>
+<p/>
+<li>The hotel I'm staying at tonight has an Access Point per floor - but since I connect to the SSID I have no idea which one I'm connected to.  In addition to that, I can see about 30 APs (including the hotels') right now.  As you can imagine, my network connectivity is bad.  Well, using <a href="https://web.archive.org/web/20080407180310/http://www.istumbler.net/">iStumbler</a> I can see all of them and get an idea for their signal strength.  What I do is highlight the SSID instance with the strongest signal, hit Propeller-Shift-J and then my network comes back.  Presumably I was taking a random instance, instead of the best instance.  Anyways, it works.<br/>
+<br/>
+(I was originally looking for a way to turn down the Gain on the wifi in the macbook, thinking that the hotel's signal would be stronger than the neighbors, but I didn't see anyway to do this)
+</li>
+</ol>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Leopard on the road tricks," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>03.11.08 / 2pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index81ea-512.html?cat=3" title="View all posts in Gadget-o-rama" rel="category">Gadget-o-rama</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml">
+<li><strong>Network Locations</strong> are good for managing your TCP/IP settings per location.  I have, for example, my worksite as a separate location - fixed IP, fixed DNS, specific proxy settings.  I have another setting for home, which is DHCP and no proxy, automagic all the way.  When I switch them, everything just works.  My Windows co-worker kills himself at how easy it is for me.</li>
+<p/>
+<li>I just found this - <strong><a href="https://web.archive.org/web/20080407180310/http://blog.curthread.org/projects/systemproxy">System Proxy</a></strong> - get Firefox to respect your Mac's proxy settings, so what I said above is actually true - <em>everything</em> just works.  Without this plugin, when you use the network Locations, Firefox doesn't respect the network settings and you have to open up its proxy settings also.  (Why is this a plugin?)</li>
+<p/>
+<li>If you use Internet Connection Sharing in order to tether your iPhone to your Ethernet's web access via an adhoc Wifi connection, I have found the system setup, but it's really particular.  The proxy can be the trickiest part, but I only have one use case so I haven't figured out whether it's necessary or not.  So ignoring passing the proxy to the iPhone, the basic steps (from memory) are:
+<ol>
+<li>On your Mac, create an adhoc network, with a specific name and password, from the Airport menu item</li>
+<p/>
+<li>On your Mac, go to the System Preferences, and Sharing.  Choose share your Ethernet.  Over Airport.  Click Airport Options... Add the network name and password for the adhoc network.  </li>
+<p/>
+<li>From your iPhone, join the adhoc network</li>
+<p/>
+<li>On your Mac, click on Internet Sharing on the left to start Sharing, the Accept message.  I've found on the iPhone it will ask me for the password for the network again. If this happens, and I don't know why, go to the next step</li>
+<p/>
+<li>On your Mac, Click on Internet Sharing again to turn it off.  Click on it right away to turn it back on, accept, blah blah</li>
+<p/>
+<li>It should work now - after you turn it off and you want to use it again, you will need to turn Internet Sharing on-off-on again for it to work, in my experience</li>
+<p/>
+</ol>
+<p>You can now surf the web from your iPhone using your desktop.  (If you don't have data services, you'll want to do this)</p>
+</li>
+<p/>
+<li>The hotel I'm staying at tonight has an Access Point per floor - but since I connect to the SSID I have no idea which one I'm connected to.  In addition to that, I can see about 30 APs (including the hotels') right now.  As you can imagine, my network connectivity is bad.  Well, using <a href="https://web.archive.org/web/20080407180310/http://www.istumbler.net/">iStumbler</a> I can see all of them and get an idea for their signal strength.  What I do is highlight the SSID instance with the strongest signal, hit Propeller-Shift-J and then my network comes back.  Presumably I was taking a random instance, instead of the best instance.  Anyways, it works.<br/>
+<br/>
+(I was originally looking for a way to turn down the Gain on the wifi in the macbook, thinking that the hotel's signal would be stronger than the neighbors, but I didn't see anyway to do this)
+</li>
+</ol>
+<ol xmlns="http://www.w3.org/1999/xhtml">
+<li>On your Mac, create an adhoc network, with a specific name and password, from the Airport menu item</li>
+<p/>
+<li>On your Mac, go to the System Preferences, and Sharing.  Choose share your Ethernet.  Over Airport.  Click Airport Options... Add the network name and password for the adhoc network.  </li>
+<p/>
+<li>From your iPhone, join the adhoc network</li>
+<p/>
+<li>On your Mac, click on Internet Sharing on the left to start Sharing, the Accept message.  I've found on the iPhone it will ask me for the password for the network again. If this happens, and I don't know why, go to the next step</li>
+<p/>
+<li>On your Mac, Click on Internet Sharing again to turn it off.  Click on it right away to turn it back on, accept, blah blah</li>
+<p/>
+<li>It should work now - after you turn it off and you want to use it again, you will need to turn Internet Sharing on-off-on again for it to work, in my experience</li>
+<p/>
+</ol>

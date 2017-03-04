@@ -1,0 +1,35 @@
+---
+layout: post
+title: equifax certificate on N95
+categories:  Gadget-o-rama
+published: 2007-06-23 07:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>equifax certificate on N95</h1>
+				<p>I wanted my N95 to check my email automagically but, as I noted <a href="index4bd3-5.html?p=326">before</a>, there was a certificate issue.  Namely it considered deadsquid's certificate untrusted.  It looks like the N95 had a certificate for Equifax, but not the root that Kev used for deadsquid's mail.  By examining the certificate I could see which one it was, and then I eventually found the matching certificate <a href="https://web.archive.org/web/20070808084747/http://www.geotrust.com/resources/root_certificates/index.asp">here</a>.</p>
+<p>You can see the certs currently on your N95 by going Menu-&gt; Tools -&gt; Settings -&gt; General -&gt; Security -&gt; Certificate Management.  They're listed there.  The cert I had was the Equifax Secure Certificate Authority, the cert I needed was something along the lines of ... Global eBusiness.</p>
+<p>At first I tried downloading it using the built-in web client, but there's no way to save an actual page to disk, from what I can see.  I then actually downloaded the <a title="beta of 4, at this time" href="https://web.archive.org/web/20070808084747/http://www.operamini.com/beta/">Opera Mini beta</a> but — although it looks nice, fast and well-designed — it doesn't permit saving either.  Finally I just downloaded the .cer version to my Mac, then hit Command-Shift-B in the Finder and bluetooth'd it to my phone.  The N95 immediately recognized as a certificate and allowed me to install it.</p>
+<p>It did  reboot without warning when next I tried entering the deadsquid mail folder, but appears to be working now.  Meaning no more untrusted certificate prompts when accessing deadsquid mail.  Sweet.</p>
+<p>Thanks to <a title="romanian?" href="https://web.archive.org/web/20070808084747/http://blog.unsecured.ro/2006/05/untrusted-certificate-gmail-on-nokias.html">this</a> blog for the pointers to the fact that this could be done, even though the certs listed weren't what I needed.
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "equifax certificate on N95," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>06.23.07 / 7pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index81ea-466.html?cat=3" title="View all posts in Gadget-o-rama" rel="category tag">Gadget-o-rama</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

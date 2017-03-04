@@ -1,0 +1,71 @@
+---
+layout: post
+title: Apple Bluetooth Keyboard on Linux
+categories:  MythTV
+published: 2008-07-04 06:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Apple Bluetooth Keyboard on Linux</h1>
+				<p>The <a href="https://web.archive.org/web/20080927023547/http://www.microsoft.com/hardware/mouseandkeyboard/productdetails.aspx?pid=081">Microsoft Entertainment 7000</a> we use for MythTV was being flaky - repeated keypresses, ignored keypresses.  Kind of strange.  So one of the problems with the microsoft keyboard was it was hard to pass around, thus getting dropped and probably creating many problems.  Apple's shiny Bluetooth <a href="https://web.archive.org/web/20080927023547/http://www.apple.com/keyboard/">keyboard</a> is small and relatively grippy.  But don't buy it at FutureShop, the bastards - the MSRP is cheaper than their price.</p>
+<p>A weird thing about the MS Entertainment keyboard is that it 'is' Bluetooth - well the keyboard and mouse are, but not necessarily.  You see, the Transceiver can operate in a custom mode where it looks like a USB HID device.  Actually, one advantage of this particular embrace-and-extend is that the keyboard is available before the OS is ready (which makes you wonder what the Bluetooth SIG was thinking). </p>
+<p>Apparently there is a <a href="https://web.archive.org/web/20080927023547/http://forum.insanelymac.com/index.php?s=&amp;showtopic=98205&amp;view=findpost&amp;p=760227">means</a> (Windows only, of course) to change it to a (limited!) Bluetooth transceiver, which is good enough for me as I need the Bluetooth keyboard to work in MythTV.  But I don't have a Windows machine around right now that I can just throw crappy drivers on without consequences.  So finally I gave up on it and brought home a Bluetooth adapter I used to detect when I was in the office and toggle my screensaver password on and off.</p>
+<p>So, then the trick was getting KnoppMyth to work with it.  (I'm still running KnoppMyth R5F1 on this machine - instructions may change for newer versions).  </p>
+<p><code>apt-get install bluetooth</code></p>
+<p>I think followed the instructions <a href="https://web.archive.org/web/20080927023547/http://ubuntuforums.org/showthread.php?t=224673">here</a> except I'm NOT running Gnome on my Knoppmyth box, so I changed /etc/bluetooth/hcid.conf file to look kinda like this:</p>
+<p><code>
+options {
+	autoinit yes;
+	# Security Manager mode
+	#   none - Security manager disabled
+	#   auto - Use local PIN for incoming connections
+	#   user - Always ask user for a PIN
+	#
+	security auto;
+	# Pairing mode
+	#   none  - Pairing disabled
+	#   multi - Allow pairing with already paired devices
+	#   once  - Pair once and deny successive attempts
+	pairing multi;
+	# Default PIN code for incoming connections
+	# not really - I changed it
+        passkey "2222";
+}
+device XX:XX:XX:XX:XX:XX {
+    name "Apple Wireless Keyboard";
+    # not sure if class is necessary, interesting, etc.
+    class  0x002540;
+    lm master;
+    # these were specified in the docs I linked but are not acceptable arguments in the version.
+    #    auth enable;
+    #    encrypt enable;
+}
+</code></p>
+<p>I also added the following options to /etc/default/bluetooth:</p>
+<p><code><br/>
+HIDD_OPTIONS="-t5000 --master --server --connect XX:XX:XX:XX:XX:XX "<br/>
+</code></p>
+<p>The '-t5000″ option is apparently required to allow the keyboard to reconnect after it goes to sleep.  Without it the keyboard will not work after a long period of inactivity.</p>
+<p><strong>oops - doesn't work yet!!!</strong></p>
+<p>And then when initializing the Bluetooth system I had to type in the PIN specified in the file on the keyboard blindly and eventually things worked.  Honestly it took more fiddling than that.  But it works.</p>
+<p>If it comes to it the obvious next option (if necessary) would be a <a href="https://web.archive.org/web/20080927023547/http://www.logitech.com/index.cfm/keyboards/keyboard/devices/3848&amp;cl=us,en">DiNovo Mini</a>, which I forgot about and didn't think was available yet.</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Apple Bluetooth Keyboard on Linux," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>07.04.08 / 6pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-234.html?cat=7" title="View all posts in MythTV" rel="category">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

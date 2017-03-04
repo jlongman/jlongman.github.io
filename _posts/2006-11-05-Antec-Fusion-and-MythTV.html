@@ -1,0 +1,125 @@
+---
+layout: post
+title: Antec Fusion and MythTV
+categories:  MythTV
+published: 2006-11-05 08:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Antec Fusion and MythTV</h1>
+				<p>I picked up a pretty HTPC computer case a month or two ago and last week I finally had time to stick other parts I'd had sitting around into it.    The case in question is an <a title="Antec's website" href="https://web.archive.org/web/20070212200018/http://www.antec.com/us/productDetails.php?ProdID=15738">Antec Fusion</a>, a pretty case which handles microATX motherboards, with a brushed aluminum face, a volume knob, a 16×2 VFD display, and a lot of heat- and noise-reduction features.  Once I get a few glitches worked out then what I'd really like to do is put the two tuner cards into it and make it the master server.</p>
+<p>Glitch #1 - while this is a just frontend for watching video recorded on the backend, I'd really like to get it to boot from the network.   The Gigabyte <a title="Gigabyte's site" href="https://web.archive.org/web/20070212200018/http://www.gigabyte.com.tw/Products/Motherboard/Products_Overview.aspx?ProductID=1670&amp;ModelName=GA-7VM400M">GA-7VM400M</a> _should_ be capable of this.  It has a LAN boot option in the BIOS and Knoppmyth has <a title="instructions on a diskless frontend" href="https://web.archive.org/web/20070212200018/http://knoppmythwiki.org/index.php?page=DisklessFrontend">scripts</a> to configure the server-side portion.  It should be do-able.</p>
+<p>Glitch #2 - getting the VFD to work in Linux.  I was getting nothing using the <a title="venky imon drivers" href="https://web.archive.org/web/20070212200018/http://venky.ws/projects/imon/">venky</a> imon drivers even with the <a title="see the patch link" href="https://web.archive.org/web/20070212200018/http://stacktrace.org/index_html/20060904-imon_vfd_standalone">patch</a> required to compile it with a linux 2.6 kernel.  The kernel module was recognizing the device, even when I un- and re-plugged it into the external USB ports.  So I  installed a copy of XP just to test the VFD.  That is the only copy of Windows I currently run.  (By currently, I mean, have on disk in an operational state, since I'll probably not use it either.)</p>
+<p>A quick note - according to the Antec FAQ's you get a garbled screen if you disconnect the power while the USB connection is still connected or vice versa.  The correct response is to disconnect or unplug the power supply for a while.  It said 5 minutes but 30 seconds did it for me.</p>
+<p>Aside:  the *only* use I've had for Windows at home over the last two years is testing hardware components for MythTV.  It seems HTPC drivers are targeted towards MCE so it's good to throw back to that system just to test whether your led's have died, your VFD is fried, etc.  The only other use I can think of is 'hacking' my phone which, come to think of, I've not had success yet with, either, thanks to an encrypted boot rom.  Anywho...</p>
+<p>Another action required with this little adventure was switching the NVidia MX440 in my master machine into this frontend so that the quality SVideo output would be used on the TV, and the ATI Radeon 9200SE would be connected via VGA to the LCD TV I have.</p>
+<p>Quick note, the easiest way to switch between these brands of videocards is</p>
+<pre>mkxf86config</pre>
+<p>and then</p>
+<pre>install-nvidia-debian.sh # or
+install-radeon-debian.sh</pre>
+<p>which worked quite nicely, once I found the correct commands.  Incidentally, xf86cfg filled up my root partition with garbage in an XF86Config file. Tricky to find and not very nice.</p>
+<p>I guess the next thing to test it by plugging it into the television and then testing whether Joan can watch TV on the new machine while I play the 360 on the new HDTV, while the master backend is recording two shows at once...
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Antec Fusion and MythTV," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>11.05.06 / 8pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-575.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-10462">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070212200018/http://daveh.smugmug.com/" rel="external nofollow">DaveH</a></span>
+				<span class="date">11.06.06 / 7am</span>
+			</cite>
+			<div class="content">
+								<p>J, you should upgrade that videocard to a GeForce 6600.  I think you can get it for real cheap.</p>
+<blockquote cite="htpcnews.com"><p>In the NVIDIA world the GeForce 6600 series adds native YPrPb (component) output into the silicon of GPU. This feature combined with the impressive new NVIDIA video processing unit of the 6×00 series makes the 6600/6600GT a killer graphics card for an HDTV user.</p></blockquote>
+<p>Maybe there's a better card now too - I dunno.  I think you'd be happy with some HD resmolutions though.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-10466">
+			<cite>
+				<span class="author"><a href="index-826.html" rel="external nofollow">j2</a></span>
+				<span class="date">11.06.06 / 12pm</span>
+			</cite>
+			<div class="content">
+								<p>Well, both of the cards are capable of outputting at 1080p through the VGA port, so it hasn't been an issue.  I've not been playing 1080p video, but I should try some 720p fivx's I have and see how the CPU does with those.</p>
+<p>The 9200SE was highly rated due to it being older and supported in linux drivers, and the MX440 was even rated better for the SVideo output.</p>
+<p>That's maybe the trick with Linux and HTPC - sometimes its better to have OLD hardware as it is more likely to be supported.  </p>
+<p>If ATI would open source the drivers which are capable of doing <a href="https://web.archive.org/web/20070212200018/http://www.extremetech.com/article2/0,1697,1880749,00.asp" rel="nofollow">transcoding on the GPU</a>, it'd be a different story though!
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-11133">
+			<cite>
+				<span class="author">Martin</span>
+				<span class="date">12.01.06 / 9am</span>
+			</cite>
+			<div class="content">
+								<p>So did you ever get the VFD to work in linux?
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-11134">
+			<cite>
+				<span class="author"><a href="index-826.html" rel="external nofollow">j2</a></span>
+				<span class="date">12.01.06 / 9am</span>
+			</cite>
+			<div class="content">
+								<p>That's the, er, $20 question.  And the answer is, 'Not yet...'.  It's *supposed* to be possible.  </p>
+<p>But I think part of the problem is I'm using Knoppmyth, and I'm reluctant to start pulling pieces out until I have time to restore everything. </p>
+<p>Especially since the next stages in the project are VOIP and HD.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-11453">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070212200018/http://www.europeanforumgames.org/" rel="external nofollow">Kosh42|EFG</a></span>
+				<span class="date">12.14.06 / 9am</span>
+			</cite>
+			<div class="content">
+								<blockquote cite="j2"><p>And the answer is, 'Not yet...'. It's *supposed* to be possible.</p></blockquote>
+<p>That's why I've decided to go with the Antec NSK2400. Halt the price and no VFD...
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

@@ -1,0 +1,53 @@
+---
+layout: post
+title: On reparenting in Hibernate
+categories:  Code Geekery
+published: 2007-01-02 11:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>On reparenting in Hibernate</h1>
+				<p>Back to work!</p>
+<p>One of the dangling bits of work from 2006 was a problem involving reparenting an object in an object tree without losing child elements.  We're using Hibernate to map our objects into the DB and the parent-child relationship is held in an association.  When I removed a node from one parent and re-added it to another via a oldParent.remove() and newParent.add(), but which should mean DB-wise changing a field in the association, it would happily delete all the child elements of the node I was trying to move!  Inconvenient, since the semantics of what I wanted was to allow something referencing the association to out-live the original association and still retain the child data.</p>
+<p>It ends up that you <a title="explanation" href="https://web.archive.org/web/20070924114730/http://forum.hibernate.org/viewtopic.php?p=2313839#2313839"><strong>can</strong></a> do what I want, but you can't use the delete-orphan cascade rule on the association.  Basically, reparenting requires that members relate as Entities but the delete-orphan cascade rule makes them treated as them as Value objects.  Interesting.  So if I want this to work I'll need to manage the members of the deletion of the relationship explicitly if I want to delete rather than reparent.<br/>
+Generally I find the Hibernate online documentation written as if someone was planning on making money from writing a book. <img src="../gif/icon_sad.gif" alt=":-(" class="wp-smiley"/>
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "On reparenting in Hibernate," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>01.02.07 / 11am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-218.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-12096">
+			<cite>
+				<span class="author">Geoff</span>
+				<span class="date">01.03.07 / 8am</span>
+			</cite>
+			<div class="content">
+								<p>After a year and a half working with Hibernate I can only give one opinion of it... it tires me.</p>
+<p>But now I'm Mr Rails and ActiveRecord so a new word has entered my vocabulary. A word that will never be atrributed to Hibernate... fun!
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

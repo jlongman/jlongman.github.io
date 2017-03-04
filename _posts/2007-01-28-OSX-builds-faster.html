@@ -1,0 +1,72 @@
+---
+layout: post
+title: OSX builds faster
+categories:  Code Geekery
+published: 2007-01-28 11:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>OSX builds faster</h1>
+				<p>I noticed that when I'm at home on my (comparatively) old and slow MacBook (a Core Duo 1.8GHz with 2GB of RAM) that it takes ~30 seconds to build my work's project.  At work, on my new and fast PC (Core 2 Duo  (unsure, but faster) GHz, also with 2GB RAM, and RAID-speed drives, it can take from 35 seconds to 1 minute and 35 seconds.</p>
+<p>On XP it appears to be related to the amount of free memory - if I kill firefox I seem to get the faster builds (but, clearly, am bored for those 30 seconds).  If it were that simple I might stand up and y'know, stretch.  But it's not clear if it is a RAM issue.  There's no particular CPU load showing in the Windows Task Manager.  I also thought if I disabled the virus scanner, that should help and it seems to, which is <a title="Or not, you decide." href="https://web.archive.org/web/20070924114853/http://www.symantec.com/enterprise/security_response/weblog/2006/07/macinenterprise_mac_os_x_virus.html">basically unnecessary</a> on OSX.</p>
+<p>So I was thinking, wouldn't it be nice to have a write-through ramdisk that would hopefully make the compilation and packaging CPU-bound (and fast RAM-bound) rather than slow disk-bound, and maybe pick up a couple of seconds on that compile.   Easy to test - <a title="the /dev/disk1 is output" href="https://web.archive.org/web/20070924114853/http://www.bigbold.com/snippets/posts/show/1808">create a ramdisk</a>, copy to and compile in the ramdisk.</p>
+<p>Hmm... 35 seconds.  I've seen shorter — I was expecting a speedup.  I know, compile again and set it to the offline mode so mvn doesn't check for updated libraries.  28 seconds.  That seems better.  Ok, remove the ramdisk and try the hard disk:  35 seconds.  Interesting.  Compile again....   29 seconds.</p>
+<p>Ha, well, I guess OSX is smarter than I am.  Or rather, I am 1 second smarter, but then less the time it takes to make sure that I persist everything I need to the hard drive later — woops, I lose!</p>
+<p><a title="Authored by makers of a commercial ramdisk, but fair" href="https://web.archive.org/web/20070924114853/http://www.osxfaq.com/tips/ram/index.ws">This</a> faq entry provides a bit of detail - basically OSX <strong>is</strong> caching the disk effectively.  I was surprised that my source and build tree would fit effectively into the cache, but empirically that seems true. This underlines the fact that I knew to be true anyways - one of the biggest kicks you can give to an existing system for performance is memory.</p>
+<p>Tomorrow morning I'll see how XP compares to OSX... Except I doubt I'll have enough RAM available to compile it and run all my tools, like Cygwin (a for free on OSX), virus scanners, etc.  At least without an upgrade.
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "OSX builds faster," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>01.28.07 / 11pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-217.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-13218">
+			<cite>
+				<span class="author">kj</span>
+				<span class="date">01.29.07 / 7pm</span>
+			</cite>
+			<div class="content">
+								<p>I used to run /var/tmp on a memory (MFS) filesystem to get a performance boost out of compiling with GCC (one of the few things that used /var/tmp instead of /tmp). I have no idea if it still works.</p>
+<p>Theo is fond of pointing out that the most expensive operation a CPU does is a memory dereference. It's bad if you blow cache, and disastrous if you hit the pagefile.</p>
+<p>But that reminds me– I need more RAM for the macbook.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-13378">
+			<cite>
+				<span class="author"><a href="index-324.html" rel="external nofollow">j2</a></span>
+				<span class="date">02.01.07 / 8am</span>
+			</cite>
+			<div class="content">
+								<p>Definitely bumping up to 2GB almost on day 1 was one of the best things I ever did.  </p>
+<p>Looking at some of the configurations for the Mac Pro and the XServe - topping out at 16GB and 32GB in the BTO options - and the RAM cost dwarfing the cost of the machine - well, I'm sure if you're paying that much you run out of RAM fast.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

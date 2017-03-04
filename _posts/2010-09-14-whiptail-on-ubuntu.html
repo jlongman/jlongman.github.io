@@ -1,0 +1,134 @@
+---
+layout: post
+title: whiptail on ubuntu
+categories:  Code Geekery
+published: 2010-09-14 03:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>whiptail on ubuntu</h1>
+				<p>whiptail is a subset of dialog's functionality on ubuntu, notably, it's already installed.  I used it to wrap some tests which are executed automatically by non-technical people.</p>
+<p>The major trick for getting whiptail menu results as variables: redirect stderr to stdout (via fd 3).<br/>
+<code>FOO=$(whiptail --menu A foo B bar 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+if [[ $FOO = "" ]]; then
+  echo cancelled; exit 1
+# etc
+</code></p>
+<p>A more complete (but still truncated) example:<br/>
+<code>#!/bin/bash
+# This is a subset of the actual script.
+# There remains some ugliness which isn't high enough priority to fix
+# Could be reworked to use associative arrays - didn't know I had bash 4 when I started 
+# FYI: DASH_T is the same dateformat used by robotframework
+DASH_T=`date '+%Y%m%d-%H%M%S'`
+# BACKTITLE shows the values entered as the UI continues
+BACKTITLE='cookiecrumb'
+# resize UI for user
+eval `/usr/bin/resize`
+SIZE_LANDC="$((${LINES}-6)) $((${COLUMNS}-5))"
+SIZE_INT=$((${LINES}-16))
+declare -a LABELS
+# build labels gets the files from the argument and puts an ordinal in front
+build_labels "$HOME/run/results"
+LABELS+=("Z")
+LABELS+=("custom")
+LABEL_CHOICE=$(whiptail --backtitle "$BACKTITLE" --title "Label" --menu "Please choose a label.  The label is used to organize the results. \nYou can also enter a custom label here." $SIZE_LANDC $SIZE_INT "${LABELS[@]}" 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+if [[ $LABEL_CHOICE == '' ]]; then
+  exit 1
+elif [[ $LABEL_CHOICE == 'Z' ]]; then
+  label=$(whiptail --backtitle "$BACKTITLE" --inputbox "Please enter a label" $SIZE_LANDC 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+  if [[ $label == '' ]]; then
+      exit 1
+  fi
+else
+  label="${LABELS[$LABEL_CHOICE*2+1]}"
+fi
+# grow the trail
+BACKTITLE=${BACKTITLE}/${label}
+build_labels "$HOME/run/urls"
+LABELS+=("Z")
+LABELS+=("custom")
+LABEL_CHOICE=$(whiptail --backtitle "$BACKTITLE" --menu "Please choose a URL list:" $SIZE_LANDC $SIZE_INT "${LABELS[@]}" 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+if [[ $LABEL_CHOICE == '' ]]; then
+  exit 1
+elif [[ $LABEL_CHOICE == 'Z' ]]; then
+  URL_LIST=$(whiptail --backtitle "$BACKTITLE" --inputbox "Please enter a URL list:" $SIZE_LANDC 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+  if [[ $URL_LIST == '' ]]; then
+    exit 1
+  else
+    whiptail --backtitle "$BACKTITLE" --yesno "Do you want to copy the URL list for future use?" $SIZE_LANDC
+    if [[ $? == 0 ]]; then
+      cp $URL_LIST $HOME/run/urls
+    fi
+  fi
+else
+  URL_LIST="$HOME/run/urls/${LABELS[$LABEL_CHOICE*2+1]}"
+fi
+BACKTITLE=${BACKTITLE}/$URL_LIST
+# eventually work is done, and the results are saved in $HOME/run/results/$label/$DASH_T
+</code></p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "whiptail on ubuntu," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>09.14.10 / 3pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-51.html?cat=2" title="View all posts in Code Geekery" rel="category">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-51908">
+			<cite>
+				<span class="author">Michael</span>
+				<span class="date">03.12.11 / 8am</span>
+			</cite>
+			<div class="content">
+								<p><i>The major trick for getting whiptail menu results as variables: redirect stderr to stdout (via fd 3).<br/>
+FOO=$(whiptail –menu A foo B bar 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)</i></p>
+<p>That's useful - didn't see it documented in several places I would expect it to be. Thank you.</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-66623">
+			<cite>
+				<span class="author">Rodnee</span>
+				<span class="date">10.16.12 / 7am</span>
+			</cite>
+			<div class="content">
+								<p>Thank you for this example.</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-174683">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20151103160512/http://bot.moldseo.info/ping/blogs.php?pg=137866" rel="external nofollow">Английский онлайн</a></span>
+				<span class="date">09.03.14 / 10am</span>
+			</cite>
+			<div class="content">
+								<p>[...] Английский язык обладает громадным лексическим богатством: полный словарь Уэбстера насчитывает около 425 000 слов. Source: <a href="index2e25-10.html?p=396" rel="nofollow">http://longman.deadsquid.com/?p=396</a> [...]</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

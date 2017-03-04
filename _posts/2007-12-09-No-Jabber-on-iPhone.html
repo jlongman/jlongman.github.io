@@ -1,0 +1,67 @@
+---
+layout: post
+title: No Jabber on iPhone
+categories:  Circular File
+published: 2007-12-09 07:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>No Jabber on iPhone</h1>
+				<p>So I <em>finally</em> managed to get the toolchain for iPhone building - after re-installing XCode and then installing the occdtools (OCD?) tools from a different subversion revision I even got my apps to compile, not withstanding some random header madness and so on.  I then went so far as to download and 'add' Jabber to <a title="libpurple based IM for iphone" href="https://web.archive.org/web/20080205054415/http://code.google.com/p/apolloim/">ApolloIM</a> to see if it would work.</p>
+<p>Now it's been an embarassingly long time since I've done much but Java, but either this is extremely well put together code or I clearly missed something obvious or <a title="good question" href="https://web.archive.org/web/20080205054415/http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a> (an IM library) isn't compiled correctly.  I say 'well put together' because adding jabber was trivial: Editing maybe 5 files (slight distinction between jabber and xmpp).  Alternatively, I missed something obvious because it didn't work - running my re-compiled version of it from the command line on the iPhone (ha!), well google mail would fail while authenticating, but msn worked fine.</p>
+<p>Which could mean something is wrong with libpurple. <strike>ref: <a title="purple == libpurple?" href="https://web.archive.org/web/20080205054415/http://ericasadun.com/?p=100">This</a> and <a title="(Erica isn't responsible for libpurple)" href="https://web.archive.org/web/20080205054415/http://ericasadun.com/?p=99">this</a>, from <a href="https://web.archive.org/web/20080205054415/http://ericasadun.com/">Erica Sadun</a>, although there's a difference between going outside of somethings design and there being something wrong.  </strike>But for the latter case the interview <a title="interesting" href="https://web.archive.org/web/20080205054415/http://brok3n.org/archivesextreme/2007/11/interview_with.html">here</a> suggests that everything is held together by gum and shoestrings...  There's some ambiguity, but looking in various repositories it doesn't look like libpurple has been recompiled since September.</p>
+<p>(<a title="I haven't tried it yet tho" href="https://web.archive.org/web/20080205054415/http://blog.twenty08.com/2007/10/08/mobilechat-v20b-released/">MobileChat 2.0  (beta)</a> is supposed to have gtalk/jabber as well, but ... the comments sound a lot like my experience).</p>
+<p><strike>Something I don't understand yet is,  why is everything using purple?  isn't it an IM library? </strike>(NM, my bad, purple != libPurple, thanks Erica!)
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "No Jabber on iPhone," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>12.09.07 / 7pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexb31a-483.html?cat=1" title="View all posts in Circular File" rel="category tag">Circular File</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-25146">
+			<cite>
+				<span class="author">ericasadun</span>
+				<span class="date">12.09.07 / 7pm</span>
+			</cite>
+			<div class="content">
+								<p>Libpurple is not the same thing as the iPhone's purple apps. Libpurple was ported by core and is used in several applications including ApolloIM. Purple apps refer to SpringBoard's application-loading protocol.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-27478">
+			<cite>
+				<span class="author">Jay</span>
+				<span class="date">01.12.08 / 1pm</span>
+			</cite>
+			<div class="content">
+								<p>Is GTalk the same as Jabber?? I have a Jabber account, but when I try to login to GTalk with Mobile Chat v2.0.0b it does not work. Also, even if I try to log in via the web on my computer, it obviously doens't recognize the username/pword.. Google Talk cannot be the same as xmpp/jabber. I use a jabber client called Spark and I can login fine.. Am I missing something here?
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

@@ -1,0 +1,71 @@
+---
+layout: post
+title: KnoppMyth r5B7
+categories:  MythTV
+published: 2006-03-31 07:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>KnoppMyth r5B7</h1>
+				<p>So...</p>
+<p>Well, I finally gave up on trying to force my hardware encoding card to be the first card.  Knoppmyth wanted it to be second to the weaker software encoding card, <em>fine</em> - life is too short.  I think the basis for this is that the hardware card requires firmware from the host and the system which provides the <a href="https://web.archive.org/web/20070123204346/http://ivtvdriver.org/index.php/Firmware">ivtv firmware</a>, <a href="https://web.archive.org/web/20070123204346/http://linux-hotplug.sourceforge.net/">hotplug</a>, does not start until later in the bootup sequence.</p>
+<p>This feels like there are some aspects of the Linux kernel that are beyond my area of experience.  And I don't really feel like taking a lot of time to find out about them.</p>
+<p>I upgraded to ivtv-0.4.4 as suggested on the Knoppmyth forums, as my digital card was not working.  The bad news is Myth doesn't seem to be tuning the internal tuner to channel 3 - so I have to run <code>ivtv-tune -d /dev/video1 -c 3</code>. This is specified in the MythTV Setup program - I don't know why I need to run it manually.  I've set it to run when the kernel module is inserted;  I can live with that if it works - I have to test it when next nothing is recording.  </p>
+<p>I rebuilt my remote control (<a href="https://web.archive.org/web/20070123204346/http://www.lirc.org/">lirc</a>) files - works really well actually.  I'm impressed.  Of course, <a href="https://web.archive.org/web/20070123204346/http://www.blushingpenguin.com/mark/blog/">mark's braindump</a> has become basically unnecessary since his patches have been integrated into modern ivtv and lirc implementations.  He still has some handy scripts and codes though.  </p>
+<p>Next simple project is adding a coupla hunnerd megs.  As it is, we have things we <em>mean</em> to watch, but haven't yet, sitting there consuming hard drive space.
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "KnoppMyth r5B7," an entry on &hearts;&hearts;&hearts; OMG!!1! PONIES!!! &hearts;&hearts;&hearts;</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>03.31.06 / 7pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-629.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-5873">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070123204346/http://www.keim-web.com/" rel="external nofollow">James Keim</a></span>
+				<span class="date">04.07.06 / 11am</span>
+			</cite>
+			<div class="content">
+								<p>I also struggled with trying to make one tuner show up first. After messing with it a long time, I discovered that you can give your tuners a numerical preference in myth-setup. I think it is under the add a tuner/card menu.</p>
+<p>I haven't actually tried it as I am now in the process of putting my cards in two separate backend systems (a master and a slave). I upgraded to r5b7 this week. I finally got my master backend system working correctly last night.</p>
+<p>My master backend has a PVR-350 and just over 300 gigs but I don't care for the way the hard drive is set up. My slave backend has a pvr-150 and nearly 500 gigs. So, I want to preference the pvr-150 for most of the recording and try to keep the pvr-350 available for time-shifting live tv. Unfortunately, I'm not sure the preferences are that granular.</p>
+<p>I'll be interested to see how things progress with your system.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-8502">
+			<cite>
+				<span class="author"><a href="index7dad-59.html?p=273" rel="external nofollow">a crick in the net " Myth bits</a></span>
+				<span class="date">08.09.06 / 2pm</span>
+			</cite>
+			<div class="content">
+								<p>[...] At 7am the dogs forced me awake, so I ignored them and plugged in a composite cable. Yep. It works. Okay, so remove the module options for manually setting the tuner, especially since net.wisdow was suggesting the new versions should be smart enough. Nope. Ok, check my own blog to see what I'd done in the past. I tried manually setting the channel to 3, which Myth is supposed to do for you. [...]
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

@@ -1,0 +1,114 @@
+---
+layout: post
+title: cruisecontrol and windows (redux)
+categories:  Code Geekery Gadget-o-rama
+published: 2005-12-21 09:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>cruisecontrol and windows (redux)</h1>
+				<p>Finally - there were two main problems.</p>
+<p>The NTServiceWrapper was running cruisecontrol in a Java 5 VM, but the build was being done in a 1.4.2 VM.  I had placed the liberries, the properties file and the comm.jar all in the 1.4.2 VM.   Since the Java installation hijacks the java.exe in C:\Windows\Systemblahblah, it was running with the last installed VM, Java 5. <img src="../gif/icon_razz-10.gif" alt=":-P" class="wp-smiley"/>   The symptom for this is that it says it can't find the COM port, especially unhelpful since the problem is really fundamental.</p>
+<p>Also, even with the cruisecontrol <a href="https://web.archive.org/web/20070207230846/http://cruisecontrol.sourceforge.net/main/configxml.html#x10">x10publisher</a>  plugin, no worky.  It still kept complaining it couldn't find the COM port.  But using  another <a href="https://web.archive.org/web/20070207230846/http://www.jpeterson.com/">x10</a> library, it <em>did</em> work.  So I switched back to the <a href="https://web.archive.org/web/20070207230846/http://www.pragmaticautomation.com/cgi-bin/pragauto.cgi/Monitor/Devices/BubbleBubbleBuildsInTrouble.rdoc">Pragmatic</a> publisher, and BAM! worked.  Do I know what the difference was?  No, and if you look at the code, it seems identical.  Do I care?  Yes, but only because I want my life back.</p>
+<p>I found it especially helpful to build an X10-test config.  It's after the jump... <a id="more-205"/></p>
+<pre>
+<code>
+&lt;cruisecontrol&gt;
+	&lt;!-- Load environment variables --&gt;
+	&lt;property environment="env" toupper="true"/&gt;
+	&lt;property name="cc.working" value="C:cruise-working"/&gt;
+	&lt;property name="cruisehost" value="devsrv"/&gt;
+	&lt;!-- Commonly used directories --&gt;
+	&lt;property name="reportdir" value="c:cruisecontrol-2.3.1reportingjspwebcontent"/&gt;
+	&lt;property name="projectdir" value="${cc.working}/checkout/${project.name}"/&gt;
+	&lt;property name="testdir" value="${projectdir}/project/setup/build/junitresults"/&gt;
+	&lt;property name="logdir" value="${cc.working}/logs/${project.name}"/&gt;
+	&lt;!-- defaults for email --&gt;
+	&lt;property name="developers.email" value="softdev@bar.com"/&gt;
+	&lt;property name="buildmaster.email" value="responsable@bar.com"/&gt;
+	&lt;property name="buildmaster.name" value="buildmaster"/&gt;
+
+	&lt;plugin name="log" dir="${logdir}" /&gt;
+	&lt;plugin name="currentbuildstatuslistener"
+		file="${logdir}/buildstatus.html"
+		/&gt;
+	&lt;plugin name="cvs"
+		localworkingcopy="${projectdir}/project"
+		/&gt;
+	&lt;plugin name="ant"
+		antscript=""
+		antworkingdir="${projectdir}"
+		target="ccrebuild"
+		uselogger="true"
+		usequiet="true"
+		/&gt;
+	&lt;plugin name="currentbuildstatuslistener"
+		file="${logdir}/buildstatus.html"
+		/&gt;
+	&lt;plugin name="htmlemail"
+		buildresultsurl="http://${cruisehost}:8080/cruisecontrol/buildresults/${project.name}"
+		mailhost="mail.bar.com"
+		returnaddress="${buildmaster.email}"
+		returnname="${buildmaster.name}"
+		subjectprefix="[build ${project.name}]"
+		xsldir="${reportdir}/xsl"
+		css="${reportdir}/css/cruisecontrol.css"&gt;
+			&lt;always address="${buildmaster.email}" /&gt;
+	&lt;/plugin&gt;
+
+	&lt;!-- continuous build --&gt;
+	&lt;!--
+	&lt;project name="x10-test"&gt;
+		&lt;bootstrappers&gt;
+		&lt;/bootstrappers&gt;
+		&lt;listeners&gt;
+			&lt;currentbuildstatuslistener/&gt;
+		&lt;/listeners&gt;
+		&lt;log&gt;
+		&lt;/log&gt;
+		&lt;modificationset&gt;
+			&lt;alwaysbuild/&gt;
+		&lt;/modificationset&gt;
+		&lt;schedule interval="360"&gt;
+			&lt;ant  antscript="" buildfile="${projectdir}/build.xml" target="pass" multiple="1"/&gt;
+		&lt;/schedule&gt;
+		&lt;publishers&gt;
+
+			&lt;!-- CruiseControl's included
+			&lt;x10 housecode="b" devicecode="1" port="com1" onwhenbroken="false" interfacemodel="cm17a" /&gt;
+			&lt;x10 housecode="b" devicecode="2" port="com1" onwhenbroken="true" interfacemodel="cm17a" /&gt;
+			&lt;onfailure&gt;
+				&lt;x10 housecode="b" devicecode="1"   interfacemodel="cm17a" /&gt;
+			&lt;/onfailure&gt;
+			&lt;x10 housecode="b" devicecode="2"  onwhenbroken="false" interfacemodel="cm17a" /&gt;
+			--&gt;
+			&lt;!-- Pragmatic's --&gt;
+			&lt;x10publisher port="com2" passdevicecode="b1" faildevicecode="b2" /&gt;
+		&lt;/publishers&gt;
+		&lt;dateformat format="yyyy-mmm-dd hh:mm:ss"/&gt;
+	 &lt;plugin name="x10publisher" classname="com.pragauto.x10publisher"/&gt;
+	&lt;/project&gt;
+
+&lt;/cruisecontrol&gt;
+</code>
+</pre>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "cruisecontrol and windows (redux)," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>12.21.05 / 9am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-586.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a>,  <a href="index81ea-586.html?cat=3" title="View all posts in Gadget-o-rama" rel="category tag">Gadget-o-rama</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

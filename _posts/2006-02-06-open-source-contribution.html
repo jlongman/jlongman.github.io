@@ -1,0 +1,126 @@
+---
+layout: post
+title: open source contribution
+categories:  Code Geekery
+published: 2006-02-06 10:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>open source contribution</h1>
+				<p>I was playing with <a href="https://web.archive.org/web/20070207231546/http://pcrcommander.sarovar.org/">PCRCommander</a>, a software XM tuner/recorder written in <a href="https://web.archive.org/web/20070207231546/http://www.python.org/">Python</a>, a language I'm interested in.  I realized that it had a few memory leak problems and a few weird UI issues (you can't resize the window!) that were irritating.  Well the beauty of open-source is scratching itches.  (... the beauty of open sores is scratching itches too)</p>
+<p>Fine, well, good, I'll get the python plugin, <a href="https://web.archive.org/web/20070207231546/http://pydev.sourceforge.net/">PyDev</a>, for <a href="https://web.archive.org/web/20070207231546/http://www.eclipse.org/">Eclipse</a>, the next kitchen-sink-wannabe.  No problem.  Now check out the source code... Oh, it uses <a href="https://web.archive.org/web/20070207231546/http://www.abridgegame.org/darcs/">darcs</a>, a decentralized version control system that is based around patches.  Which I have never used.</p>
+<p>Well, I wonder if Eclipse has a plugin for Darcs?  Yes, it does, and it's called <a href="https://web.archive.org/web/20070207231546/http://www.eclipsedarcs.org/">eclipsedarcs</a>.  Fine, oh, I need to install a <a href="https://web.archive.org/web/20070207231546/http://www.haskell.org/haskellwiki/Haskell">haskell</a> compiler in order to get darcs to run.  Fine, if there's nothing else I learned at Ingenia, it's how to compile and run stuff without knowing what it is or does.  Oh, except there's an OSX pre-compiled distribution.  Wonderful.  Install everything.</p>
+<p><a id="more-220"/></p>
+<p>Hmm...  I was expecting eclipsedarcs to be a little more bouncy when I entered the URL for the repository.  Researchresearch.  Ah, it can't find darcs on the path, and you have to <a href="https://web.archive.org/web/20070207231546/http://www.abridgegame.org/pipermail/darcs-users/2006-January/009359.html">play with OSX packaging properties</a> in order to get it to work.  Sounds too 'simple'.  Actually, it sounds like a PITA!  Why can't I just specify the executable!?</p>
+<p>Get the eclipsedarcs plugin source code using the darcs command line.   Import it into eclipse.  Find the code which executes the darcs executable.  Ah, they've already added a preference for the executable, but they just haven't exposed it in the UI, and also, it's exactly like the preference for the user's email - a simple text line.  Sounds like a job for scratchy people! </p>
+<p>Make the changes, try to figure out how multiple plugins are tested in Eclipse.  Try to get a Feature to run.  No.  Try to create an Update site.  Yes. Try to build the Update site.  No, 'can't find the plugins'.   Generally you run a new instance of Eclipse with the plugin you've just added in order to test it, but the 'hello world'/'special paste' one I wrote {am still writing} was a single plugin, so I didn't know if you need a feature to get multiple plugins going in the test Eclipse environment.</p>
+<p>Screw it, run the plugin and trust the dependencies to be loaded.  Ah!  It worked, except for the text being screwed up.  Hopefully just a packaging problem.</p>
+<p>Cool, well, everything doesn't quite seem to be here. I can get change histories from the repositories, but can't seem to 'get' the PCR Commander repository.  Maybe there's something else wrong, or maybe that's all the plugin does so far (it is, after all, only version 0.2.0).</p>
+<p><a href="https://web.archive.org/web/20070207231546/http://www.google.ca/search?q=define%3Ahoopy">Hoopy</a>, I wonder if anyone else wants my little mod?  A little searching shows the exact link that showed me <a href="https://web.archive.org/web/20070207231546/http://www.abridgegame.org/pipermail/darcs-users/2006-January/009359.html">something about OSX packaging properties</a> and it's <a href="https://web.archive.org/web/20070207231546/http://www.abridgegame.org/pipermail/darcs-users/2006-January/009356.html">previous</a> is an eclipsedarcs developer saying they're too busy to do what I think I just did.</p>
+<p>Excellent.</p>
+<p>Okay, so eclipsedarcs isn't apparently showing me how to feed things back to the source.  So back to the command line.  'whatsnew': handy, but I don't want to check in my maulings of the plugin configuration files, nor the .class files...  'revert', great! 'record', wunderbar!  Okay.  Now how do I send it, considering I don't have an exposed web repository?  Email patch!  Sounds easy.</p>
+<p>Oh, smart, you need <a href="https://web.archive.org/web/20070207231546/http://www.gnupg.org/">GPG</a>, a cryptographic signing library, to authenticate the patch.  Fortunately someone else in OSX land has packaged it up.  ‘kay, build the key, install it into the right directory.  Figure out who to send it to... and bang.   Done.</p>
+<p>All those steps and I still haven't even checked out PCRCommander, and it's now time to walk the dogs and sleep.  I'm definitely standing on the shoulders of giants, here, but its a good thing they were there or we'd ever get nothing done!
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "open source contribution," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>02.06.06 / 10pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-380.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-5658">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070207231546/http://raz.cx/" rel="external nofollow">Raz</a></span>
+				<span class="date">02.07.06 / 5am</span>
+			</cite>
+			<div class="content">
+								<p>Ah yes, the ceremonial shaving of yaks.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-5659">
+			<cite>
+				<span class="author">Geoff</span>
+				<span class="date">02.07.06 / 9am</span>
+			</cite>
+			<div class="content">
+								<p>Ya shoulda asked me about launching Eclipse runtimes from the workbench!
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-5662">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">02.07.06 / 9am</span>
+			</cite>
+			<div class="content">
+								<p>Oh that part probably took 20 minutes, so it wasn't so bad.  I think if I was REALLY re-packaging it, I would need some help though.</p>
+<p>I imagine most source repositories don't have the CPU bandwidth, but it would be neat if there was continuous integration building the latest version of a plugin at any time. </p>
+<p>But I guess IBM and eclipse are focussed on releases, corporate-foo style.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-5666">
+			<cite>
+				<span class="author">Geoff</span>
+				<span class="date">02.07.06 / 3pm</span>
+			</cite>
+			<div class="content">
+								<p>The trick to having continuous builds is having the free time to setup and handle the care and feeding of said animal.</p>
+<p>As it is I'm now working on Spindle from 9pm to 2-3-4am, 3-4 days a week. No time for 'frills' <img src="../gif/icon_wink-3.gif" alt=";-)" class="wp-smiley"/>
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-10316">
+			<cite>
+				<span class="author">Ray</span>
+				<span class="date">10.30.06 / 9pm</span>
+			</cite>
+			<div class="content">
+								<p>Hey man, just came across this blog post - I am the original author of PCRCommander (I released it anonymously at the time lest I end up facing nastiness from XM - I figure they no longer care at this point, as the XM PCR is long gone from the market).  </p>
+<p>Anyway, as I mentioned in the PCRCommander forums back in early ‘05, due to my mother's illness and starting a rather intense job, I had to put aside further development.  And the fact that XM pulled the PCR off the market kind of dried up demand and interest in further development.</p>
+<p>But if you want any help or advice on tracking down and fixing memory leak issues or other issues, drop me an email at rcgabriel AT yahoo.com.</p>
+<p>BTW, I used Python/wxWindows mostly as an experiment to see if it was mature enough to use for a 'real' production GUI app.  The memory leak issues are probably related to my use/misuse of wxPython.  </p>
+<p>The non-resizeable GUI was just to make things as simple as possible.  That's probably not too hard to change.  </p>
+<p>And darcs was also an experiment - but you certainly don't need to use darcs, you can just pull down the 0.2.2 source tarball from the PCRCommander site and play with the code a bit, if you have Python/wxPython installed.  Also, all those library depedencies should probably be brought up to date, and that might fix a bunch of issues right there.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

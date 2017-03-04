@@ -1,0 +1,76 @@
+---
+layout: post
+title: Spanish dictionary  on iPhone
+categories:  Gadget-o-rama
+published: 2008-04-12 02:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Spanish dictionary &hearts; on iPhone</h1>
+				<p>I don't know why exactly I had this brainfart for so long, but I finally thought, 'surely there must be a spanish&lt;-&gt;english dictionary for <a href="https://web.archive.org/web/20080927023521/http://code.google.com/p/wedict/">weDict</a> on the iPhone!'.   I was correct, there are <a href="https://web.archive.org/web/20080927023521/http://stardict.sourceforge.net/Dictionaries_misc.php">MANY</a> compatible dictionaries for many languages.</p>
+<p>I guess I thought that someone would make all compatible dictionaries available through online repositories.  You'd think that dictionaries would be a higher priority than themes.  God knows you've got hundreds of fugly themes polluting the list of entries in the Installer.  </p>
+<p>In any case, it is trivial to install the <a href="https://web.archive.org/web/20080927023521/http://stardict.sourceforge.net/">stardict</a>-compatible dictionaries:</p>
+<ol>
+<li>Download the tarballs and extract them.</li>
+<li>Rename the <code>*.dict.dz</code> file to <code>*.dict.gz</code>.  Extract the file you just renamed - on OSX I needed to use Archive Utility and not The Unarchiver as The Unarchiver was requiring that I specify a text encoding and then failing without extracting the file.</li>
+<li>  Finally you need to copy the (extracted) <code>*.dict</code> and <code>*.idx</code> file to your iPhone.  Assuming a 1.1.3 or later, it needs to go in your <code>/var/mobile/Library/weDict/</code> directory.  You can either use scp or I have afpd installed, which makes it really easy.  You want the mobile user's home directory, and then the <code>./Library/weDict</code> directory.</li>
+<li>Run weDict and look for words you expect to find! Wee!  NB: with one of the dictionaries I used (i2e or e2i I believe) if searching in Spanish I needed to add the appropriate accents.  E.g. t&iacute;o (uncle) was not matched by tio.  I am testing another Spanish dictionary to see if they normalize sans-accent for utility.</li>
+</ol>
+<p>Too bad I did this only 4 days before I head back to the Great White North...  It definitely would have made a difference in the speed I would have picked up words!  Hasta luego...</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Spanish dictionary &hearts; on iPhone," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>04.12.08 / 2pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index81ea-256.html?cat=3" title="View all posts in Gadget-o-rama" rel="category">Gadget-o-rama</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml">
+<li>Download the tarballs and extract them.</li>
+<li>Rename the <code>*.dict.dz</code> file to <code>*.dict.gz</code>.  Extract the file you just renamed - on OSX I needed to use Archive Utility and not The Unarchiver as The Unarchiver was requiring that I specify a text encoding and then failing without extracting the file.</li>
+<li>  Finally you need to copy the (extracted) <code>*.dict</code> and <code>*.idx</code> file to your iPhone.  Assuming a 1.1.3 or later, it needs to go in your <code>/var/mobile/Library/weDict/</code> directory.  You can either use scp or I have afpd installed, which makes it really easy.  You want the mobile user's home directory, and then the <code>./Library/weDict</code> directory.</li>
+<li>Run weDict and look for words you expect to find! Wee!  NB: with one of the dictionaries I used (i2e or e2i I believe) if searching in Spanish I needed to add the appropriate accents.  E.g. t&iacute;o (uncle) was not matched by tio.  I am testing another Spanish dictionary to see if they normalize sans-accent for utility.</li>
+</ol>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-34784">
+			<cite>
+				<span class="author">calais</span>
+				<span class="date">06.03.08 / 2pm</span>
+			</cite>
+			<div class="content">
+								<p>i had to do everything kinda backwards.  I changed the filenames and since i can't get afpd to activate on my ipod touch today i had to drop the files in using PhoneView.  Then I had to use the finderapp on my ipod touch to find the files and move them to the ~/Library/weDict folder.  WeDict, unfortunately, doesn't recognize them and when i search for words it says'Not Found!'<br/>
+Can you help?</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-34971">
+			<cite>
+				<span class="author"><a href="index-363.html" rel="external nofollow">j2</a></span>
+				<span class="date">06.14.08 / 3pm</span>
+			</cite>
+			<div class="content">
+								<p>By ‘~' do you mean mobile's home or roots home? Be certain. If I were you I'd seriously look at using SCP - it will definitely copy the files intact.</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

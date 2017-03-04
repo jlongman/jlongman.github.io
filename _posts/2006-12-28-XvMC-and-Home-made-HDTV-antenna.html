@@ -1,0 +1,203 @@
+---
+layout: post
+title: XvMC and Home-made HDTV antenna
+categories:  MythTV
+published: 2006-12-28 03:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>XvMC and Home-made HDTV antenna</h1>
+				<p>I <a title="see the comment" href="indexe2aa-8.html?p=294">switched the video cards</a> and the system looks like it is doing quite well - almost - the digital audio keeps dropping out.  At this point I'm wondering if this is an IRQ problem as a couple of things which are sharing IRQs (the video card and the capture cards) are sharing irq's.  Or it could be a PCI bandwidth/latency problem.  Or it could be the wrong driver.</p>
+<p>I tried rolling back to the <a href="https://web.archive.org/web/20070808085154/http://www.mythtv.org/wiki/index.php/XvMC">popular</a> driver (v. 7676) but it doesn't look compatible with a 2.6 kernel, so I went to the next recommended one.  Knoppmyth R5E-whatever was released, but I don't have any CD-Rs right now.  I don't know if it would help anyways (especially since I am running an SVN version).</p>
+<p>While I'm percolating on whether to solve the entire problem by throwing money at it (a new mobo, massive cpu, etc), I decided to see what I could do about raw reception.   Somewhere on <a title="awesome site" href="https://web.archive.org/web/20070808085154/http://www.avsforum.com/">avsforum</a> or possibly <a title="cool!" href="https://web.archive.org/web/20070808085154/http://www.instructables.com/">instructables</a> I saw a link to <a title="antenna instructions" href="https://web.archive.org/web/20070808085154/http://www.lumenlab.com/forums/index.php?showtopic=9613">this</a> set of instructions on how to build a DIY antenna.</p>
+<p>I dropped by the Home Depot to pickup a <a title="like this one" href="https://web.archive.org/web/20070808085154/http://www.radioshack.com/product/index.jsp?productId=2062049&amp;cp=&amp;kw=matching+transformer&amp;parentPage=search">FM modulator to coax converter</a> and a couple of screws and washers.  I should have picked up a saw.</p>
+<p>Anyways, I scanned the instructions and then decided to improvise on a piece of styrofoam I had around the house instead of cardboard.  Any cardboard of a suitable size was already attached to a box, and <em>someday</em> we'll need them to move.</p>
+<p>The styrofoam was great, except the original design had the backing support wood screwed to the front pieces.  I dug up some 4 inch deck screws we'd used on the climbing wall and went to find some aluminum foil.</p>
+<p>I had a huge roll of vapour barrier from solar insulating the skylight and windows in the summer.  A perfect substitute for aluminum foil.</p>
+<p>When it got to the wood part Joan's brother Willy had over-estimated how much we'd need for a project to seal the skylight so I had tons of the perfect size.   Except no saw.  I first tried a serrated multi-tool knife blade which looked like it was going to work great, except the wood split down the middle when I tried to just cut a couple of millimeters and then force it by weight.  No surprise.</p>
+<p>Next inspiration was to use the drill to do high-density horizontal, vertical and diagonal holes until it came apart easily.  Then a quick file and it was ugly^H^H^H^Hacceptable.</p>
+<p><a href="main63f5.html?g2_view=core:ShowItem&amp;g2_itemId=4161"><img align="right" alt="antenna" src="../jpg/img_6423c872.jpg?g2_view=core:DownloadItem&amp;g2_itemId=4173&amp;g2_serialNumber=2"/></a>Everything else was pretty straight-forward.  It was pretty cool how it came together.  Finally, the piece-de-resistance, attach the converter, sit it down on the table, unplug the amplified antenna that was plugged into the HDHomeRun and plug it in.</p>
+<p>I have to say, I'm impressed.   Before I received CBC, which is transmitting from a couple of blocks away, and barely received the carrier for a US channel.</p>
+<p>legend:</p>
+<ul>
+<li>ss : signal strength</li>
+<li>snq: signal to noise quality</li>
+<li>seq: ???</li>
+</ul>
+<p>Before (amplified rabbit ears):</p>
+<p>8vsb:19: ss=100 snq=55 seq=100<br/>
+program 8vsb:19-3 2.1 CBFT-DT filter='0×0000 0×0030 0×0031 0×0034″<br/>
+8vsb:20: ss=99 snq=45 seq=100<br/>
+program 8vsb:20-3 6.1 CBMT-HD filter='0×0000 0×0030 0×0031 0×0034 0×0035″<br/>
+8vsb:53: ss=95 snq=0 seq=0<br/>
+8vsb:71: ss=97 snq=80 seq=100<br/>
+program 8vsb:71-3 6.1 CBMT-HD filter='0×0000 0×0030 0×0031 0×0034 0×0035″</p>
+<p>After (unamplified DIY antenna):</p>
+<p>8vsb:14: ss=71 snq=30 seq=100<br/>
+program 8vsb:14-4 5.1 WPTZ-HD filter='0×0000 0×0032 0×0033 0×0035″<br/>
+program 8vsb:14-7 5.2 WPTZ-WX filter='0×0000 0×0041 0×0042 0×0046″<br/>
+8vsb:19: ss=100 snq=80 seq=100<br/>
+program 8vsb:19-3 2.1 CBFT-DT filter='0×0000 0×0030 0×0031 0×0034″<br/>
+8vsb:20: ss=100 snq=90 seq=100<br/>
+program 8vsb:20-3 6.1 CBMT-HD filter='0×0000 0×0030 0×0031 0×0034 0×0035″<br/>
+8vsb:32: ss=60 snq=15 seq=0<br/>
+8vsb:43: ss=4 snq=10 seq=0<br/>
+8vsb:55: ss=97 snq=90 seq=100<br/>
+program 8vsb:55-3 6.1 CBMT-HD filter='0×0000 0×0030 0×0031 0×0034 0×0035″</p>
+<p>Unfortunately I can't tell what those channels are as <a title="a great source for canadian geekery" href="https://web.archive.org/web/20070808085154/http://www.digitalhome.ca/">digital home canada</a> is down for maintenance.  I should point out, I think this is a directional antenna, and all I've done so far is <em>point it up</em>.  The next plan is to unseal the skylight and point it out there, in a southerly direction.  Oh and get that HD playback working correctly!
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "XvMC and Home-made HDTV antenna," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>12.28.06 / 3pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-285.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-11852">
+			<cite>
+				<span class="author"><a href="index-412.html" rel="external nofollow">j2</a></span>
+				<span class="date">12.28.06 / 3pm</span>
+			</cite>
+			<div class="content">
+								<p>up the ladder, but not installed:<br/>
+8vsb:32: ss=71 snq=40 seq=100<br/>
+program 8vsb:32-3 33.1 VPT-HD filter='0×0000 0×0030 0×0031 0×0034″<br/>
+program 8vsb:32-4 33.2 VPT-2 filter='0×0000 0×0040 0×0041 0×0044″</p>
+<p>pbs! <img src="../gif/icon_smile.gif" alt=":)" class="wp-smiley"/>
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-11959">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070808085154/http://kev.needham.ca/" rel="external nofollow">kev</a></span>
+				<span class="date">12.31.06 / 10am</span>
+			</cite>
+			<div class="content">
+								<p>pics of your creation?
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-11970">
+			<cite>
+				<span class="author"><a href="index-412.html" rel="external nofollow">j2</a></span>
+				<span class="date">12.31.06 / 4pm</span>
+			</cite>
+			<div class="content">
+								<p>Pictures are here: <a href="main63f5.html?g2_view=core:ShowItem&amp;g2_itemId=4161" rel="nofollow">http://longman.deadsquid.com/gallery2//main.php?g2_view=core:ShowItem&amp;g2_itemId=4161</a>
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-12017">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070808085154/http://kev.needham.ca/" rel="external nofollow">kev</a></span>
+				<span class="date">01.01.07 / 1pm</span>
+			</cite>
+			<div class="content">
+								<p>It's like a spikey pillow(!) Impressive that you can get PBS from Montreal... tower in Vermont, I'm guessing?
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-12020">
+			<cite>
+				<span class="author"><a href="index-412.html" rel="external nofollow">j2</a></span>
+				<span class="date">01.01.07 / 2pm</span>
+			</cite>
+			<div class="content">
+								<p>yep, vermont.</p>
+<p>Here's what I'm getting after putting it in the skylight.  I've omitted the channels that did not show anything (there could be channels I'm missing there).  It's amazing how full the spectrum is!</p>
+<p>8vsb:2: no signal (ntsc)<br/>
+8vsb:3: no signal (ntsc)<br/>
+8vsb:5: no signal (ntsc)<br/>
+8vsb:6: no signal (ntsc)<br/>
+8vsb:7: no signal (ntsc)<br/>
+8vsb:9: no signal (ntsc)<br/>
+8vsb:10: no signal (ntsc)<br/>
+8vsb:12: no signal (ntsc)<br/>
+8vsb:14: ss=76 snq=60 seq=100<br/>
+program 4: 5.1 WPTZ-HD<br/>
+program 7: 5.2 WPTZ-WX<br/>
+8vsb:17: no signal (ntsc)<br/>
+8vsb:19: ss=100 snq=90 seq=100<br/>
+program 3: 2.1 CBFT-DT<br/>
+8vsb:20: ss=100 snq=90 seq=100<br/>
+program 3: 6.1 CBMT-HD<br/>
+8vsb:22: no signal (ntsc)<br/>
+8vsb:23: no signal (ntsc)<br/>
+8vsb:24: no signal (ntsc)<br/>
+8vsb:27: no signal (ntsc)<br/>
+8vsb:30: no signal (ntsc)<br/>
+8vsb:32: ss=74 snq=40 seq=100<br/>
+program 3: 33.1 VPT-HD<br/>
+program 4: 33.2 VPT-2<br/>
+8vsb:33: no signal (ntsc)<br/>
+8vsb:35: no signal (ntsc)<br/>
+8vsb:43: ss=2 snq=15 seq=0<br/>
+program none<br/>
+8vsb:44: no signal (ntsc)<br/>
+8vsb:45: no signal (ntsc)<br/>
+8vsb:46: no signal (ntsc)<br/>
+8vsb:52: no signal (ntsc)<br/>
+8vsb:53: ss=79 snq=50 seq=100<br/>
+program 1: 3.1 WCAX-HD<br/>
+program 2: 3.2 WCAX-2<br/>
+8vsb:57: no signal (ntsc)<br/>
+8vsb:62: no signal (ntsc)<br/>
+8vsb:73: no signal (ntsc)<br/>
+8vsb:78: no signal (ntsc)<br/>
+8vsb:80: no signal (ntsc)<br/>
+8vsb:81: no signal (ntsc)<br/>
+8vsb:82: no signal (ntsc)
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-13745">
+			<cite>
+				<span class="author"><a href="index8844-43.html?p=312" rel="external nofollow">a crick in the net " Blog Archive &raquo; 18 months of Power!</a></span>
+				<span class="date">02.05.07 / 3pm</span>
+			</cite>
+			<div class="content">
+								<p>[...] To make things worse I've been trying to re-align the HDTV antenna for a bit, leaving a corner of the plastic unsealed. In retrospect, having two layers is a really good idea with this skylight. [...]
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

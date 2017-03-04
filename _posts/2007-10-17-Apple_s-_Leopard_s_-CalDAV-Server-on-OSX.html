@@ -1,0 +1,42 @@
+---
+layout: post
+title: Apple's (Leopard's) CalDAV Server on OSX
+categories:  Circular File
+published: 2007-10-17 06:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Apple's (Leopard's) CalDAV Server on OSX</h1>
+				<p>I tried installing Leopard's (Open Source) CalDAV server ('<a title="Originally named, I find." href="https://web.archive.org/web/20071121044718/http://trac.calendarserver.org/projects/calendarserver">CalendarServer</a>') on my Tiger Mac Pro using <a title="not my brother" href="https://web.archive.org/web/20071121044718/http://finkproject.org/">Fink</a>'s Python 2.4 and failed.  <a title="A Python networking library" href="https://web.archive.org/web/20071121044718/http://twistedmatrix.com/trac/">Twisted</a> didn't like my Python version, and for some reason Python 2.4 from Fink was also unhappy.</p>
+<p>Clemens was a big fan of Mac <a href="https://web.archive.org/web/20071121044718/http://www.macports.org/">Ports</a>.  Both are ports to OS X of Open Source Unix tools.  I'd originally found Fink first, which is why it won, but considering that Ports is also at <a title="darwin, etc" href="https://web.archive.org/web/20071121044718/http://www.macosforge.org/">MacOSForge</a> along with CalendarServer...</p>
+<p>Anywho, installing Port's Python 2.5 brought new problems: the _md5 module.  Hmmm... okay, some searching and... <a title="search for _md5" href="https://web.archive.org/web/20071121044718/http://echelog.matzon.dk/logs/browse/macports/1188862095">this</a>.</p>
+<blockquote><p>sudo port install py25-hashlib<br/>
+./run</p></blockquote>
+<p>Hmmm.... now zlib is missing.  Could it be true?</p>
+<blockquote><p>sudo port search py25 |  grep zlib</p></blockquote>
+<p>Baby.</p>
+<blockquote><p>sudo port install py25-zlib<br/>
+./run</p></blockquote>
+<p>And it works!  Connect to <a title="Good luck with that..." href="https://web.archive.org/web/20071121044718/http://192.168.1.201:8008/">http://192.168.1.201:8008/</a> and bam!  Create a calendar in iCal with the appropriate fields and the provided passwords in the temporary setup and I can even write to it.  Oooo...!  Ahhh....</p>
+<p>I'll let someone else at work test it with <a title="hi mike!" href="https://web.archive.org/web/20071121044718/http://www.mozilla.org/projects/calendar/">Sunbird/Lightning</a>, Outlook (+ <a title="does this work?" href="https://web.archive.org/web/20071121044718/http://openconnector.org/">connector</a>), etc
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Apple's (Leopard's) CalDAV Server on OSX," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>10.17.07 / 6pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexb31a-475.html?cat=1" title="View all posts in Circular File" rel="category tag">Circular File</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

@@ -1,0 +1,159 @@
+---
+layout: post
+title: blinkenlights
+categories:  MythTV
+published: 2006-04-22 10:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>blinkenlights</h1>
+				<p>A couple of times I've been screwing with the settings on MythTV and wanted to reboot - but I didn't know if the tuners were currently recording.  Three ways to check - </p>
+<ol>
+<li>in the frontend's UI, go to the Information Center and check the status of the tuners,
+</li>
+<li>start Watching TV, turn on the <abbr title="Picture in Picture">PIP</abbr> and if you get both pictures, both tuners are free (I have two),
+</li>
+<li>go to my MythWeb website and check the status.
+</li>
+</ol>
+<p>None of these ways are fast or efficient.</p>
+<p>So I was thinking of slapping some coin down on a nice <abbr title="Vacuum Flourescent Display">VFD</abbr> multi-line display, controllable by <a href="https://web.archive.org/web/20070808085106/http://www.lcdproc.org/">LCDProc</a>, which MythTV supports.  But there was no instant gratification there.  And it occurred to me it was really overkill for what I needed.</p>
+<p>Then I remembered a little Java utility I'd seen - a <a href="https://web.archive.org/web/20070808085106/http://hacks.oreilly.com/pub/h/4897">light blinker</a> for the keyboard.  Not that that's the first time I'd seen computer controlled Caps Lock, Scroll Lock and blah lock lights, but it was the first time I was surprised it worked - and thus remembered.  Java generally is hit and miss when it comes to hardware interaction and I've seen non-Java utilities not work on some machines.</p>
+<p>Anyways.  So a simple search led to <a href="https://web.archive.org/web/20070808085106/http://www.joedog.org/wacky/">wackyd</a>, a Linux daemon designed to blink the keyboard lights.  Excellent.    So compile, install, test.  Woohoo! My keyboard lights are blinking!</p>
+<p>So the next step is to bridge MythTV and wackyd.  I can see a couple of strategies.</p>
+<ol>
+<li>An external process to monitor the logs of the mythbackend server and trigger the wackyd</li>
+<li>A copy of the existing Myth LCD process, listening on the same events but sending its message downstream to wackyd</li>
+<li>A driver for LCDProc which is limited to blinking lights</li>
+<li>A driver for LCDProc which is maps inputs to blinking lights</li>
+</ol>
+<p>Obviously the first sucks, the second is alright and scopes to other myth applications, the third requires MythTV to already handle LEDs correctly and the fourth is probably the most general and the most complex.</p>
+<p>I just need more free time!
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "blinkenlights," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>04.22.06 / 10pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-633.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml">
+<li>in the frontend's UI, go to the Information Center and check the status of the tuners,
+</li>
+<li>start Watching TV, turn on the <abbr title="Picture in Picture">PIP</abbr> and if you get both pictures, both tuners are free (I have two),
+</li>
+<li>go to my MythWeb website and check the status.
+</li>
+</ol>
+<ol xmlns="http://www.w3.org/1999/xhtml">
+<li>An external process to monitor the logs of the mythbackend server and trigger the wackyd</li>
+<li>A copy of the existing Myth LCD process, listening on the same events but sending its message downstream to wackyd</li>
+<li>A driver for LCDProc which is limited to blinking lights</li>
+<li>A driver for LCDProc which is maps inputs to blinking lights</li>
+</ol>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-6015">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">04.23.06 / 2pm</span>
+			</cite>
+			<div class="content">
+								<p>Very cool - lcdproc has a <a href="https://web.archive.org/web/20070808085106/http://www.gnu.org/software/ncurses/ncurses.html" rel="nofollow">curses</a> library - curses is a text display/paint library - so I can simulate having a real display.  It works but there are no virtual LEDs.  I don't know if this is a limitation of the curses lcdproc driver or if MythTV just doesn't highlight LEDs.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-6022">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">04.24.06 / 9am</span>
+			</cite>
+			<div class="content">
+								<p>I'm looking at option 2 - but I'm <a href="https://web.archive.org/web/20070808085106/http://raz.cx/blog/2006/03/on-postgresql-jdo-and-shaving-of-yaks.html" rel="nofollow">shaving yaks</a>.  Or maybe not, maybe this is what its always like working with C/C++. <img src="../gif/icon_smile-49.gif" alt=":-)" class="wp-smiley"/> </p>
+<p>My goal was to get the source into eclipse, so re-re-install the <a href="https://web.archive.org/web/20070808085106/http://www.eclipse.org/cdt/" rel="nofollow">CDT</a>.  Because I had it previously installed, and disabled, wack around with that for a while.  Install qt-open-source on OSX (my eclipse/editing platform, not my execution platform).  Try to get qmake working. Try to figure out how to get the includes configured...  (How do these people normally work?  I guess vi and qmake.)  Woops, time to go to sleep.</p>
+<p>'Someone' should import mythtv into eclipse cdt projects. <img src="../gif/icon_smile-49.gif" alt=":-)" class="wp-smiley"/>
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-7814">
+			<cite>
+				<span class="author">nosuch user</span>
+				<span class="date">06.10.06 / 3pm</span>
+			</cite>
+			<div class="content">
+								<p>hmm.. if you go into ‘media library/watch recordings', anything that is currently being recorded shows up in red. If you have an ‘all programs' default view sorted by time with most recent at the top (which almost every theme I've ever seen does) it'll show programs being recorded right at the top in red.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-8519">
+			<cite>
+				<span class="author"><a href="index7dad-61.html?p=273" rel="external nofollow">a crick in the net " Myth bits</a></span>
+				<span class="date">08.10.06 / 7am</span>
+			</cite>
+			<div class="content">
+								<p>[...] Next task, backup all the tv programs so I can reformat one partition with less inodes, copy all files to that drive, then format another partition with MORE inodes. When that's done, I will look at the code for mythtv and get my darn blinker working. (It's mostly done, I've just never compiled it, also it's possible the upcoming Myth 0.20 may have already changed the code I reworked). [...]
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-9122">
+			<cite>
+				<span class="author"><a href="index30e3-74.html?p=283" rel="external nofollow">a crick in the net " Blog Archive &raquo; Knoppmyth R5D1</a></span>
+				<span class="date">09.04.06 / 5pm</span>
+			</cite>
+			<div class="content">
+								<p>[...] I'm going to look at what it would take to build the latest and greatest build of MythTV and possibly run it, next. Once that is done, I'll look at integrating the blinkenlights and iCalendar changes I've made. [...]
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-13781">
+			<cite>
+				<span class="author"><a href="index-908.html" rel="external nofollow">j2</a></span>
+				<span class="date">02.07.07 / 4pm</span>
+			</cite>
+			<div class="content">
+								<p>Just saw, 'nosuch user''s comment, so, response:</p>
+<p>Thanks, you've presented a fourth option to my list, but that still doesn't meet my requirements fast and efficient.  Blinking LEDs do.  </p>
+<p>Since I originally wrote this, someone has done something similar using a perl or python script scraping the website and then blinking the LEDs.  I don't have the reference off hand.</p>
+<p>While from a UI perspective that's fast, the implementation is hardly efficient.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

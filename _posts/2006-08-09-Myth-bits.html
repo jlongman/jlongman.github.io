@@ -1,0 +1,69 @@
+---
+layout: post
+title: Myth bits
+categories:  MythTV
+published: 2006-08-09 02:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Myth bits</h1>
+				<p>I upgraded my Myth config to R5C7 - it seemed to remember most of my bits or come up with exactly the things I had entered, once I had burned the third CD which was the first that actually passed the 'testcd' argument.  Sigh.  </p>
+<p>One thing outstanding was the analog plugging into the digital channels for sound which was a simple fix once I remembered the correct kernel module arguments.  FYI, 'options snd_pcm_oss adsp_map=0 dsp_map=0″ force the oss compatibility layer to speak to your analog device.  You may need to check the aplay -L (-l?) to see which digit to put in the place of the 0.  In my case the analog was on 0 and the digital was on 4.</p>
+<p>The big thing was that the Hauppage 150 wasn't actually giving anything except static.  So I went through the standard process of updating to the most recent version of ivtv (0.4.6, in my case), ensuring the firmwares were in the right place, turning the machine off and unplugging it long enough to ensure the firmware was zero'd, etc. etc. etc.  One suggestion I read was to verify that the non-tuner ports were working.  If so, you've got a mis-configured tuner.  But this was around 1:30am and I was desperate for sleep around 10:30 or so.</p>
+<p>At 7am the dogs forced me awake, so I ignored them and plugged in a composite cable.  Yep.  It works.  Okay, so remove the module options for manually setting the tuner, especially since net.wisdow was suggesting the new versions should be smart enough.  Nope.  Ok, check my <em>own</em> <a href="index8a71-26.html?p=237">blog</a> to see what I'd done in the past.  I tried manually setting the card's channel to 3, which Myth is supposed to do for you.</p>
+<p>It works.  M*F@!!!  Change the mythbackend script to run the same command, and voila.   R5C7.</p>
+<p>Next task, backup all the tv programs so I can reformat one partition with less inodes, copy all files to that drive, then format another partition with MORE inodes.  When that's done, I will look at the code for mythtv and get my <a href="indexe1a1-25.html?p=245">darn blinker</a> working.  (It's mostly done, I've just never compiled it, also it's possible the upcoming Myth 0.20 may have already changed the code I reworked).
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Myth bits," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>08.09.06 / 2pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-578.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-8516">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070207231920/http://raz.cx/" rel="external nofollow">Raz</a></span>
+				<span class="date">08.10.06 / 5am</span>
+			</cite>
+			<div class="content">
+								<p>Oh the joys of making your televisual device work.</p>
+<p>If I hadn't spent the last couple of days with another Hauppauge device (MediaMVP) and a NAS device and learning more about SMB/CIFS than I ever wanted to know, I'd have reason to laugh <img src="../gif/icon_smile-33.gif" alt=":-)" class="wp-smiley"/>
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-8520">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">08.10.06 / 7am</span>
+			</cite>
+			<div class="content">
+								<p>Have you seen <a href="https://web.archive.org/web/20070207231920/http://mvpmc.sourceforge.net/" rel="nofollow">mvpmc</a>?    It's a replacement for the Hauppauge software.  I've never used it, thus don't know if it might have been easier for your use case, but it does have the dis/advantage of being open source...
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

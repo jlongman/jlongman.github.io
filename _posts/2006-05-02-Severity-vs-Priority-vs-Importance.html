@@ -1,0 +1,104 @@
+---
+layout: post
+title: Severity vs Priority vs Importance
+categories:  Code Geekery
+published: 2006-05-02 01:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Severity vs Priority vs Importance</h1>
+				<p><a href="https://web.archive.org/web/20070924114830/http://www.atlassian.com/software/jira/">Jira</a>'s rating system has been extremely frustrating since we first started using it.  It doesn't help that the words used have small semantic differences which the people whose mother tongue is not English may not understand (nor I explain, in their language!).</p>
+<p>And then <em>Atlassian</em> confuses the two terms!</p>
+<p>In Jira, an issue is assigned a Priority.  But if you check the definition of Priority, it states they consist of Blocker, Crasher, Major, Minor, Cosmetic.  Those aren't Priorities, they are Severities!  (Well, maybe a Blocker could be a priority.  Which doesn't help).  </p>
+<p>E.g.: If I have a client which is responsible for 50% of my income and they have a Major then it should be higher priority than the 2% client with a Crasher!  (assuming no overlap and <a href="https://web.archive.org/web/20070924114830/http://en.wikipedia.org/wiki/Ceteris_paribus">Ceteris Paribus</a>, of course)</p>
+<p>I prefer to use Urgency and Importance - an issue which is a Crasher is Urgent, but maybe because the 50%-customer doesn't care, it's not Important.    Etc.</p>
+<p>Atlassian's <a href="https://web.archive.org/web/20070924114830/http://jira.atlassian.com/browse/JRA-886">issue</a>, specifically <a href="https://web.archive.org/web/20070924114830/http://jira.atlassian.com/browse/JRA-886#action_23217">here</a>, explains why they simplified the system to not having two levels to track, but doesn't detail why they mis-named (or mis-defined) the field.  They also don't go into why management would be too stupid to understand the difference. </p>
+<p>The solution provided in the issue is to create a Custom Field, something Jira does quite well.  The problem I have with that is the terrible definition will persist in the help and documentation, continually bringing up an awful issue.  And also I think that given multiple clients it's worth tracking EACH clients priority with an issue.  </p>
+<p>Finally, its not uncommon to produce a composite index which consists of the product of Importance and Urgency - something I <em>would</em> like to call Priority - which allows a business to keep developing for the future even if a 50%-customer dominates current sales.  And taking this further the Priority could slide with age - in an attempt to prevent issue starvation.  </p>
+<p>(At this point I think we've re-invented kernel scheduling algorithms.)
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Severity vs Priority vs Importance," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>05.02.06 / 1pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-224.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-6077">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070924114830/http://raz.cx/" rel="external nofollow">Raz</a></span>
+				<span class="date">05.02.06 / 1pm</span>
+			</cite>
+			<div class="content">
+								<p>(chuckle) My approach has always been, and remains, to establish a severity (or impact) as a rough measure of 'how much' an issue matters to customers/users and to set priorities (what gets worked on at the expense of what) during some sort of review, even an informal one. A natural consequence of this is that the two are not algorithmically linked; determining priorities is precisely what human managers are employed for in the first place!</p>
+<p>I do like the fact that attempting to algorithmically link the two has the dual effects of (a) not doing so and (b) introducing a third abstraction.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-6078">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070924114830/http://www.atlassian.com/software/jira/" rel="external nofollow">Scott Farquhar</a></span>
+				<span class="date">05.02.06 / 2pm</span>
+			</cite>
+			<div class="content">
+								<p>I'm not sure if you are aware, but you can rename system fields by editing the language properties file.  Perhaps you could create a language jar that just had ‘priority' renamed as 'severity'?</p>
+<p>I know that doesn't address the documentation issue - but you can also rebuild the docs if you so desire also <img src="../gif/icon_smile.gif" alt=":)" class="wp-smiley"/>
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-6083">
+			<cite>
+				<span class="author">Nicolas</span>
+				<span class="date">05.03.06 / 11am</span>
+			</cite>
+			<div class="content">
+								<p>One important thing when dealing with customer is that developers should not decide what is urgent/important whatever for the customer. Thats why systems exist to track customer tickets and most of them includes all the things you talk about. You could do that with a seperate project in JIRA. At the end only the result priority should end-up in the bug report at the developement level. I think adding any other field would mean mixing things that should not be mixed. And in this regard, I think JIRA single field priority is the reight behavior.</p>
+<p>The usefullness/worthiness of the priority choices is an other discussion though <img src="../gif/icon_wink-2.gif" alt=";-)" class="wp-smiley"/>
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-6144">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">05.10.06 / 7pm</span>
+			</cite>
+			<div class="content">
+								<p>Thanks scott!  Right you are, I knew that but the question was still dangling around work.</p>
+<p>Raz, I think I see your point, but you've tampered with the definitions I was trying to establish.  And introducing 'impact' is yet another complication - because now we can be talking about regression-scope and/or the number of modules which are affected.  </p>
+<p>Which is a good point, there will always be another factor which will weigh the output and I'm not saying an algorithm is the best solution.  But I like the idea of having an algorithmic backup and then provide human override and control.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

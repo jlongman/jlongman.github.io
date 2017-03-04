@@ -1,0 +1,36 @@
+---
+layout: post
+title: mythink in action
+categories:  MythTV
+published: 2006-01-14 10:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>mythink in action</h1>
+				<p>Carp!  </p>
+<p>  I've had tons ‘o' misery with <a href="https://web.archive.org/web/20070808084916/http://mysettopbox.tv/phpBB2/viewtopic.php?t=6497">Knoppmyth R5A22</a> - apparently the maintainer released a version of MythTV based on the Subversion development branch.  It wasn't stable.  So when R5A30.1 came to my attention, even though it had the, 'R5A22, don't upgrade!' warning, I upgraded.</p>
+<p>That actually went fine.  What screwed me is that Myth deleted all my home directories - which is where I kept my crib notes for the specialization I needed from my machine.  So, between a cold and not having slept much this week, I was up to 2am just trying to get it sneezing again.</p>
+<p>A lot of the problems came down to the fact that the system is initializing the video capture drivers before it initializes the hotplug module which is required to feed firmware to the drivers.  So, I'll be busy this morning.</p>
+<p><b>edit</b>:<br/>
+Looks like they <a href="https://web.archive.org/web/20070808084916/http://www.mail-archive.com/ivtv-users@ivtvdriver.org/msg00821.html">screwed up the firmware loading</a> in <a href="https://web.archive.org/web/20070808084916/http://www.ivtvdriver.org/">ivtv-0.4.1</a>.  I apply those changes, recompile, and bang, both my video cards and my remote control controller is found.  Now I just have to figure out why it doesn't tune to channel 3 and only plays live tv for a couple of seconds.  Also, merge the new remote control config with the one required to control the settopbox.
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "mythink in action," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>01.14.06 / 10am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-626.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

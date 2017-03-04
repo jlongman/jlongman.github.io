@@ -1,0 +1,82 @@
+---
+layout: post
+title: Freemind viewer in Confluence 4.2
+categories:  Circular File
+published: 2012-04-18 04:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Freemind viewer in Confluence 4.2</h1>
+				<p>(me: Oh hullo blog, where you been?  blog: Sneaking!)</p>
+<p>Finally Confluence upgraded to a version less than 4 years old, but it broke my embedded <a href="https://web.archive.org/web/20121230235605/http://freemind.sourceforge.net/">freemind</a> viewer.  Freemind is a free as in speech and beer mindmap tool.  Confluence is a wiki, and it's nice to view the mindmaps in the wiki.</p>
+<ul>
+<li>Add a user macro for Freemind - match the options below</li>
+<li>Get swfobject.js (or flashobject.js) and attach it to a page - note the URL location of the attachment - substitute it below</li>
+<li>Get visorFreemind.swf and attach it to a page - note the URL location of the attachment - substitute it below</li>
+</ul>
+<p>You can get the javascript and flash objects by following <a href="https://web.archive.org/web/20121230235605/http://freemind.sourceforge.net/wiki/index.php/Flash_browser">these instructions</a>.</p>
+<code>
+## Macro title: Freemind MindMap
+## Macro has a body: N
+## Body processing: No macro body
+## Output: HTML
+##
+## Developed by: xxx
+## Date created: xxx
+## Installed by: xx
+## Set the file
+## @param file:title=Mindmap file|type=string|required=true|desc=Write the attachment name (e.g. mine.mm)
+## Set the width for the player
+## @param width:title=Viewer width|type=string|desc=Enter the width of the video in pixel (e.g. 640px)|required=true|multiple=false
+## Set the height of the player
+## @param height:title=Viewer height|type=string|desc=Enter the height of the video in pixel (e.g. 480px)|required=true|multiple=false
+<!-- swfobject -->
+<div>
+<em>Couldn't display!</em>
+</div>
+  flashvars = {initLoadFile:'/download/attachments/${content.getIdAsString()}/$paramname'};
+  params = {BASE: '/download/attachments/${content.getIdAsString()}/$paramname'};
+  attributes = {}
+  swfobject.embedSWF('http://yourhost/download/attachments/1527344/visorFreemind.swf', 'flashcontent-$paramname', '$paramwidth', '$paramheight', '8″, 'expressInstall.swf', flashvars, params, attributes)
+</code>
+</div>
+</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You're currently reading "Freemind viewer in Confluence 4.2," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>04.18.12 / 4pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexb31a-42.html?cat=1" title="View all posts in Circular File" rel="category">Circular File</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-60624">
+			<cite>
+				<span class="author">Alexander Elsholz</span>
+				<span class="date">05.23.12 / 12pm</span>
+			</cite>
+			<div class="content">
+								<p>Hi,</p>
+<p>i get the error message:</p>
+<p>Couldn't display! flashvars = {initLoadFile:'/download/attachments/1213258/$paramname'}; params = {BASE: '/download/attachments/1213258/$paramname'}; attributes = {} swfobject.embedSWF('http://localhost:8090/download/attachments/1213258/visorFreemind.swf', 'flashcontent-$paramname', '$paramwidth', '$paramheight', '8″, 'expressInstall.swf', flashvars, params, attributes)</p>
+<p>could you help me to get it work for confluence 4.2?</p>
+<p>thanks a lot alex</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

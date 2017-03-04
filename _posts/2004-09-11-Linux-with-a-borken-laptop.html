@@ -1,0 +1,94 @@
+---
+layout: post
+title: Linux with a borken laptop
+categories:  Code Geekery Gadget-o-rama
+published: 2004-09-11 05:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Linux with a borken laptop</h1>
+					<p>My Sony Vaio Laptop (A Vaio 505TEK, which is very similar to <a href="https://web.archive.org/web/20060916044553/http://www.epinions.com/Sony_VAIO_R505SK_SuperSlim_Pro_PIII_850MHz___20GB___128MB___12_1_LCD___Win2K___Notebook_Computer__Notebooks_PCG_R505TSK/display_~full_specs">this</a>.) has been grumpy lately – grinding noises occasionally, and losing its mind (and OS) too.   When it would lock up, it would corrupt OS files.  I'd fix it using the recovery CD, but this time I'd lent my docking station with the requisite CD/DVD drive to <a href="https://web.archive.org/web/20060916044553/http://charlie.younghusband.org/">Charlie</a>.  (He also has a Vaio, albiet a much more recent one, whose docking station died).</p>
+	<p>Oh, and I've been thinking about returning to my Linux roots, given that Microsoft is going all <a href="https://web.archive.org/web/20060916044553/http://www.microsoft.com/windows/windowsmedia/drm.aspx">DRM</a>, and Linux has come a long way since I last used it.  But it's nearly impossible to install Linux on a Vaio anyways, because the docking bay is seen as a firewire peripheral and most linux install kernels don't include the firewire drivers.  (Normally you do it from Windows, and dual-boot—but my Windows trashed itself).</p>
+	<p>So, what did I have?  USB and network.   My first thought was to boot the machine using a USB drive, but I don't have a USB drive large enough to hold a <a href="https://web.archive.org/web/20060916044553/http://www.knoppix.net/">Knoppix</a> CD.  Which would mean I'd need a bastardized version, which wouldn't be big enough to have what I'd need, and I'd have to remaster it every time I wanted to add something to the toolset.  Okay, well, whatever, I'll install it to the harddrive and eliminate Windows from the machine anyways.  Josh was using Linux on his more recent Vaio, so I could probably do it too.  And I have my desktop machine to be a Windows machine if I need it.</p>
+	<p>Linux was known for having poor battery life on a laptop.  I'm really hoping that's been fixed now.  It may just be that I'm going to go back to Windows 2000 if it can't keep up.  As my laptop is aging its battery life ain't doing so well anyways.  Going to Windows again will probably mean spending $$$ on a new laptop hard drive as I also think that Linux will handle bad sectors better than Windows.  And the machine is only a Pentium 3, 750, so what's the point?  Especially when <a href="https://web.archive.org/web/20060916044553/http://www.apple.com/ca/powerbook/">these</a> babies are out there... </p>
+	<p>Back to the story – so I finally decided on a distribution, (ah the age old question, what flavour shall I have?) <a href="https://web.archive.org/web/20060916044553/http://www.redhat.com/">RedHat</a>'s <a href="https://web.archive.org/web/20060916044553/http://fedora.redhat.com/">Fedora</a> <img src="https://web.archive.org/web/20060916044553im_/http://fedora.redhat.com/images/header-fedora_logo.png" alt="redhat" align="right"/>Core.  Why?  No particular reason, except that I'd never really used RedHat.   The next candidate was <a href="https://web.archive.org/web/20060916044553/http://www.gentoo.org/">Gentoo</a>, whose core concept of you configure parameters for everything once and everytime you install a new package you compile with those same parameters optimized for you, was intriguing.</p>
+ Next, downloading.  My desktop machine, which I had recently decided to try XP on, was ALSO going crazy.  It would <a href="https://web.archive.org/web/20060916044553/http://www.bsod.org/">BSOD</a> every 30 minutes or so.  Which meant downloading the Fedora DVD (I just got my <a href="https://web.archive.org/web/20060916044553/http://www.sonystyle.com/is-bin/INTERSHOP.enfinity/eCS/Store/en/-/USD/SY_DisplayProductInformation-Start?ProductSKU=DRU530A">DVD burner</a>, may as well use it) took 4 or 5 days, as it had to be restarted every 30 minutes, and I've not really been home thanks to work...  (Thanks <a href="https://web.archive.org/web/20060916044553/http://azureus.sourceforge.net/">BitTorrent</a>, for being able to restart downloads...)
+	<p>One BSOD mid-burn causing a ruined disk-later,  I cleaned up machine and saw that NVidia drivers were still hanging around from my old card.  Since removing them it seems happier.  </p>
+	<p>Burn the Fedora DVD.</p>
+	<p>On the Fedora DVD there were boot images for floppies and USB disks.  I downloaded a utility to write them to the USB drive for windows from my desktop, but they would only write to A: or B: – not where my USB drive was (F:).   So I booted knoppix (which can't detect my nework device on the desktop, making it sad) in order to run dd to write it properly.  Had to reformat the USB drive a few times, after locking Knoppix once! (Which can't be my Windows drivers!  This could be bad memory...), and then got it to write the image.</p>
+	<p>I put it in my laptop, plugged the laptop into the ethernet, giddy with anticipation and... Nothing, it ignored it.  Twiddle the settings to boot from the 'Removable devices'.  Nothing, it boots to a very borken copy of Windows.  Crap.  But I noticed it had the option to boot from the network... Maybe I can use that?</p>
+	<p>Well!  Quite a bit of research later, Intel has something called <a href="https://web.archive.org/web/20060916044553/http://pxes.sourceforge.net/pxe.html">PXE</a> which uses <a href="https://web.archive.org/web/20060916044553/http://www.dhcp-handbook.com/dhcp_faq.html">DHCP</a> and <a href="https://web.archive.org/web/20060916044553/http://www.webopedia.com/TERM/T/TFTP.html">TFTP</a> to download and boot a small image, which can bootstrap the linux kernel intended to install Fedora over a network.</p>
+	<p>I'm a <em>little</em> bit familiar with this stuff – I used it at Ingenia, almost 10 years ago.  I've actually been all Windows the last 4 years, beween travelling and my job, there was no opportunity for linux.  Fortunately this stuff hasn't changed.  The <a href="https://web.archive.org/web/20060916044553/http://www.linux-mag.com/2002-10/netbooting_01.html">Network Booting</a> article got me through it, as well as just playing with things a little bit.</p>
+	<p>I also had to turn off the DHCP server in my <a href="https://web.archive.org/web/20060916044553/http://www.networkeverywhere.com/products/nwr04b.asp">router</a>, so that my desktop machine could be the DHCP server.  Two DHCP servers giving different answers, and one incorrect, is not a good thing.</p>
+<ul>
+<li>/<ul><li>tftpboot/<ul>
+<li>default.txt</li>
+<li>initrd.img</li>
+<li>pxelinux.0</li>
+<li>README</li>
+<li>vmlinuz</li>
+</ul></li></ul></li></ul>
+	<p>When I had the TFTP, and DHCP server running, the only real trick was getting PXELINUX to use the install linux kernel and then getting it and its ramdisk to talk to each other.   It looked like this:<br/>
+<pre><br/>
+LABEL linux
+  KERNEL linux
+  APPEND initrd=./initrd.img root=/dev/ram0<br/>
+</pre></p>
+	<p>For some reason I had to type in the name of the kernel at the boot prompt, 'vmlinuz'.   And it started the linux boot sequence!</p>
+	<p>When that was done, it came up in a standard Linux install page, looking for the CDROM.  I told it to use the FTP Server I'd set up using <a href="https://web.archive.org/web/20060916044553/http://sourceforge.net/projects/filezilla/">FileZilla</a>, and WHAM, it was off to the races.  Reformatted the hard drive automagically, and bam, here I am.</p>
+	<p>So, a while later, my machine was running Red Hat!  Sweet!</p>
+<ol>
+<li><a href="https://web.archive.org/web/20060916044553/http://www.linux-mag.com/2002-10/netbooting_01.html">Network Booting</a> (using PXE) – the first half of this article was a godsend.The second half assumes your host is NFS (or running Linux), and you're trying to do something more complex than I was,</li>
+<li><a href="https://web.archive.org/web/20060916044553/http://perso.wanadoo.fr/philippe.jounin/tftpd32.html">TFTPD32</a> was a DHCP server and TFTP server rolled up in one,</li>
+<li><a href="https://web.archive.org/web/20060916044553/http://sourceforge.net/projects/filezilla/">FileZilla</a>'s Server allowed me to share the CD once I got it past into the Fedora install ramdisk.<br/>
+
+Make sure when you add an anonymous user, after you point it at your CD root, that you give the user READ, LIST, + SUBDIRS permission!
+</li>
+</ol>
+	<p>Next, I need to get the power management and then the wifi going.</p>
+
+ 			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Linux with a borken laptop," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>09.11.04 / 5pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-611.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a>,  <a href="index81ea-611.html?cat=3" title="View all posts in Gadget-o-rama" rel="category tag">Gadget-o-rama</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml">
+<li><a href="https://web.archive.org/web/20060916044553/http://www.linux-mag.com/2002-10/netbooting_01.html">Network Booting</a> (using PXE) – the first half of this article was a godsend.The second half assumes your host is NFS (or running Linux), and you're trying to do something more complex than I was,</li>
+<li><a href="https://web.archive.org/web/20060916044553/http://perso.wanadoo.fr/philippe.jounin/tftpd32.html">TFTPD32</a> was a DHCP server and TFTP server rolled up in one,</li>
+<li><a href="https://web.archive.org/web/20060916044553/http://sourceforge.net/projects/filezilla/">FileZilla</a>'s Server allowed me to share the CD once I got it past into the Fedora install ramdisk.<br/>
+
+Make sure when you add an anonymous user, after you point it at your CD root, that you give the user READ, LIST, + SUBDIRS permission!
+</li>
+</ol>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-1630">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20060916044553/http://www.deadsquid.com/~longman/?p=100" rel="external nofollow">a crick in the net  " Blog Archive   &raquo; Saturday Night Fever</a></span>
+				<span class="date">03.12.05 / 9pm</span>
+			</cite>
+			<div class="content">
+								<p>[...] 'd last used it when I'd tested a MythTV install. I've got Fedora on my laptop, and KnoppMyth, a Knoppix derivative (which is Debian, IIRC) on my Myth box...  Actually I wa [...]</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

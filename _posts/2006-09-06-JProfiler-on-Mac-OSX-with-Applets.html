@@ -1,0 +1,57 @@
+---
+layout: post
+title: JProfiler on Mac OSX with Applets
+categories:  Code Geekery
+published: 2006-09-06 10:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>JProfiler on Mac OSX with Applets</h1>
+				<p>Getting a profiler for a Java Applet running on OSX when your applet is embedded in security-controlled context can be challenging.  The fact that I'm running a trial license of <a href="https://web.archive.org/web/20070207232002/http://www.ej-technologies.com/products/jprofiler/overview.html">JProfiler</a> and there doesn't seem to be any support unless you pay doesn't help.  Oh, and it doesn't work unless you do some voodoo.</p>
+<p>So given this situation, here's the voodoo:</p>
+<ol>
+<li>Start JProfiler as an application, and choose the last option, 'An Applet running in a browser'.</li>
+<li>Choose the appropriate version of the VM - 1.5.0 or 1.4.2. It depends on which version your applet was compiled with, since even thought a 1.5 VM can execute 1.4.2, if you've linked against the wrong version's libraries you will have an incompatible class version error.</li>
+<li>AFAIK, the default port is fine but if you know of a conflict change it.</li>
+<li>'Wait for a connection' seems the simple way to do things.</li>
+<li>Follow the instructions of the next step, which basically means cut and paste the line they provide into the appropriate Java Control Panel.  Note that if you need 1.4.2, you will have to set the Java 5 Control Panel to use 1.4.2, and then open the Java 1.4.2 Control Panel and paste in the line there.</li>
+<li>if you're ready, then choose 'Yes, start the session, and wait for the Java plugin.'</li>
+<li>Now the tricky part.  Find the file, <code>libprofiler.jnilib</code>.  For me, it was in <code>/Applications/jprofiler4/bin/macos</code>.  Open a terminal and <code>cd /Applications/jprofiler4/bin/macos</code>.  From that directory, execute Safari, should be <code>/Applications/Safari.app/Contents/MacOS/Safari</code>.</li>
+<li>In the Safari you just opened, login to your webapp and enter the page where your applet is.</li>
+<li>Go back to JProfiler and start the session.  For me that meant, clicking on 'Finish', clicking on the 'Evaluation License' button, choosing my startup options and clicking 'Ok'.  Your profiling session should now start.</li>
+</ol>
+<p>Make sure that Safari isn't running when you start this.  According to <a href="https://web.archive.org/web/20070207232002/http://java.sun.com/developer/community/askxprt/2006/jl0227.html">this</a> document, the Java Plugin shares its VM across applets so it's best to start with a clean slate.<br/>
+This was a bit of a bugbear to figure out.  I guess another way to do this would be to copy the jprofiler.jnilib either into a permanent location for the JVMs or the browser, but considering this is an evaluation license, I have no motivation to do so.  Yet.</p>
+<p>Oh, these instructions may be valid for Windows also:  substitute <code>cmd</code> for Terminal, find the right directories for your <code>libprofiler.jnilib</code> and <code>iexplorer.exe</code> or <code>firefox.exe</code> and it might work, if it doesn't already.
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "JProfiler on Mac OSX with Applets," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>09.06.06 / 10am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-536.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml">
+<li>Start JProfiler as an application, and choose the last option, 'An Applet running in a browser'.</li>
+<li>Choose the appropriate version of the VM - 1.5.0 or 1.4.2. It depends on which version your applet was compiled with, since even thought a 1.5 VM can execute 1.4.2, if you've linked against the wrong version's libraries you will have an incompatible class version error.</li>
+<li>AFAIK, the default port is fine but if you know of a conflict change it.</li>
+<li>'Wait for a connection' seems the simple way to do things.</li>
+<li>Follow the instructions of the next step, which basically means cut and paste the line they provide into the appropriate Java Control Panel.  Note that if you need 1.4.2, you will have to set the Java 5 Control Panel to use 1.4.2, and then open the Java 1.4.2 Control Panel and paste in the line there.</li>
+<li>if you're ready, then choose 'Yes, start the session, and wait for the Java plugin.'</li>
+<li>Now the tricky part.  Find the file, <code>libprofiler.jnilib</code>.  For me, it was in <code>/Applications/jprofiler4/bin/macos</code>.  Open a terminal and <code>cd /Applications/jprofiler4/bin/macos</code>.  From that directory, execute Safari, should be <code>/Applications/Safari.app/Contents/MacOS/Safari</code>.</li>
+<li>In the Safari you just opened, login to your webapp and enter the page where your applet is.</li>
+<li>Go back to JProfiler and start the session.  For me that meant, clicking on 'Finish', clicking on the 'Evaluation License' button, choosing my startup options and clicking 'Ok'.  Your profiling session should now start.</li>
+</ol>

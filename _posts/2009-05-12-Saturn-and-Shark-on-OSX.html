@@ -1,0 +1,35 @@
+---
+layout: post
+title: Saturn and Shark on OSX
+categories:  Circular File
+published: 2009-05-12 03:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Saturn and Shark on OSX</h1>
+				<p>I've been examining a... complicated program for work that is very event-based and contains nearly zero documentation.  Thank god its really clean code.  In any case it's a bit difficult disentangling the call paths when packets are setting off all kinds of different event handlers.  (Did the FSM spring from the mind of a coder?  This coder, maybe?  It's not that bad, and given the networking it interacts with its not that surprising it looks pasta-ish).</p>
+<p>Anyways, <a href="https://web.archive.org/web/20090722002929/http://developer.apple.com/tools/sharkoptimize.html">Shark</a>, a sampling profiler on OSX has been pretty handy for understanding what's going on.  It's pretty impressive that it can work on any binary.  (Well, 'permitted binary' I guess - Apple is notorious for fux0ring tools that could be used to circumvent DRM).  A sampling binary should interfere less with real performance since it is observing a system rather than changing it.  (notwithstanding a Heisenbug)</p>
+<p>However, as it is a sampling profiler, the choice of sampling period becomes important.  This was immediately apparent as the default sampling rate was too low and there were call paths that were clearly missed.  <a href="https://web.archive.org/web/20090722002929/http://en.wikipedia.org/wiki/Nyquist&#x2013;Shannon_sampling_theorem">Nyquist</a> would say that I should do that at twice the rate of the samples I wish to observe so 3.2GHz processor, assume 1 instruction/cycle?, 0.0000003125s/sampling rate and .... I'm not going to look at the assembly.  I'm a bit busy to play with that right now.  But looking at the fabulous results - once I increased the sampling rate to 20µs, the lowest permitted - its possible that I have two subsequent similar call paths, or it is the same call path...  more certain results are likely to come from an instrumented profiler.</p>
+<p>Given I'm not actually trying to optimize performance in this case an instrumented profiler should be sufficient.  <a href="https://web.archive.org/web/20090722002929/http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/SaturnUserGuide/index.html">Saturn</a> (a relative of gprof) will apparently do this, but does require compile-time instrumentation.  </p>
+<p>(Speaking of apples and saturn, much yummier, a <a href="https://web.archive.org/web/20090722002929/http://www.orangepippin.com/apples/saturn.aspx">saturn apple</a>). </p>
+<p><strong>update</strong> Hunh - looks like Saturn is written in Java.  Ironical that a tool which can be used to fix performance problems is slow.  I suppose I'm not being fair - the data set I was using in Shark was much smaller.</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Saturn and Shark on OSX," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>05.12.09 / 3pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexb31a-202.html?cat=1" title="View all posts in Circular File" rel="category">Circular File</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

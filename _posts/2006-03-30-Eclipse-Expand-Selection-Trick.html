@@ -1,0 +1,36 @@
+---
+layout: post
+title: Eclipse Expand Selection Trick
+categories:  Code Geekery
+published: 2006-03-30 10:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Eclipse Expand Selection Trick</h1>
+				<p>I was doing some editing which wasn't quite big enough to justify the <a href="https://web.archive.org/web/20070207231639/http://www.answers.com/regex ">regex</a> a larger problem would have required, but still could use some improvement in editing.  And thus, a quick little trick for <a href="https://web.archive.org/web/20070207231639/http://www.eclipse.org/">Eclipse</a>:</p>
+<p>In Eclipse, Control-left and Control-right stop at '<a href="https://web.archive.org/web/20070207231639/http://en.wikipedia.org/wiki/CamelCase">Camel-Case</a>' boundaries.  E.g. if I have a variable named 'aliceTheCamelHasFourHumps', then if I placed my cursor before the lower case 'a' in 'alice', I would have to tap Control-right six times in order to select the entire word. </p>
+<p>A quicker way to do it is Control-up - which selects the next largest enclosing element, 'entity' or scope</p>
+<p>In the simple example above, one tap of Control-up would select the entire variable, already a huge savings, but it will also do so from any position in the variable.   In order to use the Control-left or Control-right, I have to be at the extreme right or left of the variable, or go left to the beginning, delete the left portion, then go right and delete the end portion.  An extra keypress.  But that's assuming I want to delete.  Indeed the worse case is I go to the beginning or end of the word in order to select it and perform some other operation on the variable.  (Say, Control-2-r, a local file symbol rename, handy for method- and private-scoped symbols)</p>
+<p>Of course, if you tap Control-up a second time, it will grab the next largest scope - e.g.  if 'aliceTheCamelHasFourHumps' was actually 'aliceTheCamelHasFourHumps.removeAHump()', then it will select the method (the second part) also.  It will continue to grow in scope until it gets to the block level, continuing in blocks to the method, the class, the file.  Control-down retreats the selection to a lower scope.</p>
+<p>Very handy.
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Eclipse Expand Selection Trick," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>03.30.06 / 10am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-580.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

@@ -1,0 +1,34 @@
+---
+layout: post
+title:  isValidateblahblah
+categories:  Code Geekery
+published: 2005-11-15 07:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>isValidateblahblah</h1>
+				<p>Finally.  After 6 months of being irritated by a bug, but not having the time to deal with it, I bit the bullet.</p>
+<p>Whenever you put 'tiles' into one of our framework's tile-holders, revalidate(), the call to resize yourself, was ignored.  I wasn't involved in anything more than obscure trivial recommendations in that part of the code, and thus didn't feel qualified to hit it.  Since the framework guy walked 3 or 4 weeks ago, I've been taking on some of that responsibility.</p>
+<p>So, finally, in a JPanel, if you ever hppen to hardwire your rootPane to contain a ContentPane, and force every component in there so you don't trash your toolbars or surrounding buttons when you goof around with the contents, make SURE the rootPane isValidateRoot() returns false.  And ignore what the documentation for JScrollPane's isValidateRoot's  says, it's backwards! (at least JDK 1.4.2)</p>
+<p>And now everything behaves like it should.
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You're currently reading "isValidateblahblah an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>11.15.05 / 7pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-362.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

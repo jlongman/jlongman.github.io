@@ -1,0 +1,68 @@
+---
+layout: post
+title: Re-writing paths in BSD Tar
+categories:  Code Geekery
+published: 2009-02-16 06:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Re-writing paths in BSD Tar</h1>
+				<p>Strip the beginning off:</p>
+<p><code><br/>
+tar -c -f foo.tar -C rootNboot -s,bootstrap/(.\*),\1, bootstrap<br/>
+</code></p>
+<p>Use something innocuous as your regex character.  Slash and hash are not good choices.  I've also glossed over the details about escaping magic characters.</p>
+<p>here's what python wants me to use</p>
+<p><code><br/>
+'tar -c -f foo.tar -C rootNboot -s' "\',^bootstrap/\(.\\\\*\\),\\1,\'" 'bootstrap'<br/>
+</code></p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Re-writing paths in BSD Tar," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>02.16.09 / 6pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-213.html?cat=2" title="View all posts in Code Geekery" rel="category">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-39919">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20091004223028/http://raz.cx/" rel="external nofollow">Roland Turner</a></span>
+				<span class="date">02.17.09 / 1am</span>
+			</cite>
+			<div class="content">
+								<p>That's some odd tar; in GNU tar '-s' causes the specified list of names to extract to be sorted in archive order.</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-39925">
+			<cite>
+				<span class="author"><a href="index-320.html" rel="external nofollow">j2</a></span>
+				<span class="date">02.17.09 / 11am</span>
+			</cite>
+			<div class="content">
+								<p>BSD <img src="icon_biggrin-2.html" alt=":-D" class="wp-smiley"/></p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

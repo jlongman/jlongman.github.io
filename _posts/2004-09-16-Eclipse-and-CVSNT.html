@@ -1,0 +1,34 @@
+---
+layout: post
+title: Eclipse and CVSNT
+categories:  Code Geekery
+published: 2004-09-16 11:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Eclipse and CVSNT</h1>
+					<p>This one frustrated me for so long, and tonight I was reminded about how awesome <img src="https://web.archive.org/web/20060916044655im_/http://www.eclipse.org/images/EclipseBannerPic.jpg" alt="eclipse" align="right"/><a href="https://web.archive.org/web/20060916044655/http://www.eclipse.org/">Eclipse </a>is when it works.  <a href="https://web.archive.org/web/20060916044655/http://www.cvsnt.org/">CVSNT</a> exhibits some very Unix'uous behaviour in that it is case sensitive to the path, in a way that a Unix-based CVS is not.  End result, Eclipse's CVS support is maimed unless you get the path right.</p>
+	<p>You don't need to make the repository path look like a Unix path, you just need to make sure that you get the capitalization right.  E:/Data/cvs/, not e:/data/cvs.  you'll have to get the correct path from the CVS administrator.</p>
+	<p>If you did check it out wrong,  it's not too hard to fix – Go to the CVS Repository View, New-&gt; Repository Location, create the correct path.  Then go back to Package explorer, and right-click on your project and edit it's Properties-&gt;CVS-&gt;Change Sharing.  Uncheck the 'Compatible CVS Repositories' button if you don't see it.  Double click on your correct repository and repeat until all your projects are done.  Once all references to the wrong repository are changed, you can then go back to the CVS Repositories Perspective and delete the wrong reference.  (This is the same way you would change the user for a repository).</p>
+	<p>Then you can browse your Resource History, use the Commit Sets in the Team Synchronizing perspective (a favourite of mine!), and do version diffs and so on.  Eclipse rocks!</p>
+
+ 			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Eclipse and CVSNT," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>09.16.04 / 11pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-359.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

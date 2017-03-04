@@ -1,0 +1,33 @@
+---
+layout: post
+title: IntelliJ, OSX and kdiff3
+categories:  Circular File
+published: 2008-04-01 04:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>IntelliJ, OSX and kdiff3</h1>
+				<p><strong>update</strong>: Jetbrains refuses to acknowledge any problem and frankly their support is offensive.  At least when its free software you can say you get what you pay for.</p>
+<p>Any IDE that lets you have merge conflicts in its configuration files and then doesn't allow you to fix those problems from the IDE is stupid.  IntelliJ is one of those IDEs.  It is the single most frustrating thing I find with that pos (piece of software, of course ;-)).  Particularly since it should use the equivalent of the &lt;blink&gt; tag to let you know it happened.  Instead it silently puts itself into a state where you can't work for an hour why you try to recover the working state of the configuration files.</p>
+<p>This was recently exasperated for me by <a href="https://web.archive.org/web/20080723190001/http://kdiff3.sourceforge.net/">kdiff3</a>,  otherwise a fine merge tool (almost as good as <a href="https://web.archive.org/web/20080723190001/http://furius.ca/xxdiff/">xxdiff</a>), as kdiff3 was apparently saving the merged files with some weird line-endings or encoding. The symptoms were that IntelliJ complained that, 'no content was permitted in the prolog', but it did apparently save NEW content to the configuration file, so it was actually intepreting the file. (!)  In the end I took the merged file into another editor and saved the file with Unix line endings and 'UTF8 with no BOM'.  </p>
+<p>It may actually have been the <a href="https://web.archive.org/web/20080723190001/http://unicode.org/faq/utf_bom.html#BOM">BOM</a> (Byte-Order-Mark) that killed everything, including compilation on the Linux-hosted build server of Java files, but frankly, I'm now 2 hours behind where I wanted to be so I'll have to leave this for an update.</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "IntelliJ, OSX and kdiff3," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>04.01.08 / 4am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexb31a-208.html?cat=1" title="View all posts in Circular File" rel="category">Circular File</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

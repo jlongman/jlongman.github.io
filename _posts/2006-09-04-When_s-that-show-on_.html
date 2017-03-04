@@ -1,0 +1,35 @@
+---
+layout: post
+title: When's that show on?
+categories:  MythTV
+published: 2006-09-04 12:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>When's that show on?</h1>
+				<p>I made a small modification to the <a title="MythWeb is the web-based access TO myth not on the myth machine." href="https://web.archive.org/web/20070207231953/http://www.mythtv.org/wiki/index.php/MythWeb">MythWeb</a> app.  It's stupid, it's simple, it hardly seemed worth doing.  But it was (almost) pretty easy.  All it does it allow you to download an <a title="iCalendar the format, not the iCal the program" href="https://web.archive.org/web/20070207231953/http://en.wikipedia.org/wiki/ICalendar">iCalendar</a> file associated with your different tv shows.  It seems kinda pointless considering you can tell myth to record the shows, and then you'll watch ‘em later, but I figure it's actually a nice to have.</p>
+<p>Having the iCal item means you can put it in your calendar, or share it with other people.  This might be handy to just communicate that a show has been recorded or it can be used to highlight that conflicts need to be negotiated.  Anyways, once I figured out how <a href="https://web.archive.org/web/20070207231953/http://www.php.net/">php</a> works (I always thought it WAS perl), wrote (and rewrote, since I accidentally deleted it) a simple <a title="iCalendar" href="https://web.archive.org/web/20070207231953/http://tools.ietf.org/html/rfc2445">RFC-2445</a> format date conversion tool, figured out how Myth works, found, used and corrected some strange variable reference that looks like a dangerous dangling useless variable (Q: what's the difference between <code>$show</code> and <code>$program</code>? A: a lot, if <code>$show</code> is never used again and your values never change, even if you change the program/show you are looking at) then I got it to the point where...</p>
+<p>It doesn't work.  But I know why it doesn't work.  For some reason in the <code>.ics</code> file transmitted from the serer there is a leading blank line and <a href="https://web.archive.org/web/20070207231953/http://www.apple.com/ical/">iCal</a> won't accept it.  I'm not sure if this is some php weird-ism or something in the iCal library, <a href="https://web.archive.org/web/20070207231953/http://bennu.sourceforge.net/">bennu</a>, I am using.</p>
+<p>But that is tomorrow's problem.</p>
+<p>(Incidentally, iCal files are accepted in mobile phones, Outlook, iCal, google calendar, <a href="https://web.archive.org/web/20070207231953/http://www.mozilla.org/projects/calendar/">shaver's doohickey</a>, and any calendar app worth its salt.)
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "When's that show on?," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>09.04.06 / 12am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-576.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

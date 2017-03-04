@@ -1,0 +1,39 @@
+---
+layout: post
+title: Knoppmyth R5.5 and Mythbuntu 8.04.1 and fail
+categories:  MythTV
+published: 2008-07-29 07:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Knoppmyth R5.5 and Mythbuntu 8.04.1 and fail</h1>
+				<p>Neither one of these distributions would come up clean, but at least Mythbuntu was giving me enough information to look for things online.  Knoppmyth I was really at a loss!</p>
+<p>FINALLY I figured out that lirc was modprobe'ing and using the device from the USB VFD display and IR receiver instead of the IR Blaster on my PVR-150.  In addition in Mythbuntu, networking was coming up before mysql, and this also screwed things up.</p>
+<p><code><br/>
+sudo rmmod lirc_imon<br/>
+sudo /etc/init.d/lirc restart<br/>
+sudo /etc/init.d/mysql restart<br/>
+sudo /etc/ini.d/mythtv-backend restart<br/>
+</code></p>
+<p>Will do wonders, assuming you've otherwise setup lirc correctly.</p>
+<p>So I need to make things permanent and figure out how to stop the tuner cards from swapping devices on boots, as well as stop crashing every now and then.  I may go back to Knoppmyth just because I'm more familiar with where it keeps files.</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Knoppmyth R5.5 and Mythbuntu 8.04.1 and fail," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>07.29.08 / 7pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-232.html?cat=7" title="View all posts in MythTV" rel="category">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

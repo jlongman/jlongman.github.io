@@ -1,0 +1,48 @@
+---
+layout: post
+title: Xcode diff selection with Clipboard
+categories:  Code Geekery
+published: 2009-05-29 02:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Xcode diff selection with Clipboard</h1>
+				<p>Yet another User Script to restore functionality lost from the IDE (at least it's possible - pbpaste and pbcopy are pretty cool).  This kind of thing is useful when you've moved code between files and changes are still coming in the old files - or any case really where you've got similar text but your diff tool isn't acrobatic enough to realize something that we as moo-hans pick up easily.</p>
+<p>I've moved beyond xxdiff (sorry Martin) and I'm now using sourcegear's diffmerge as the diff flavour of the week.  Obviously any diff tool would work.  It's not free-as-in-speech, but rather free-as-in-beer but it is nice and clean and does let you edit one of the diff'd files.  (Should be both).  (Also, doesn't matter for this example) </p>
+<p><code>
+#! /usr/bin/perl -w
+# compare the current selection with the clipboard
+my $selectionfile = '/tmp/diff.se.'.$$;
+my $clipfile = '/tmp/diff.cb.'.$$;
+open(SELFILE, '&gt;'.$selectionfile) || die("Couldn't copy selection into ".$selectionfile);
+while (){
+    print SELFILE;
+}
+close(SELFILE);
+system('/usr/bin/pbpaste  &gt; '.$clipfile) ;#|| die("Couldn't paste into ".$clipfile);
+system('/Users/longman/bin/diffmerge.sh -t1 Selection -t2 Clipboard '.$selectionfile.' '.$clipfile);
+</code></p>
+<p>This is created as an xcode user script, with input=selection, output=discard (or display in alert) and errors=display in alert. </p>
+<p>I don't know why the ‘die' kills execution, and this isn't really what I'm supposed to be doing right now.  (/me whistles)</p>
+<p>PS&gt; diffmerge free-as-in-speech would mean it would run happily on my BSD systems...  Fortunately sshfs lets me work around that.<br/>
+PPS&gt; it's in perl because I found the perl way to get the xcode selection as an example first <img src="../gif/icon_wink-2.gif" alt=";-)" class="wp-smiley"/></p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Xcode diff selection with Clipboard," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>05.29.09 / 2pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-158.html?cat=2" title="View all posts in Code Geekery" rel="category">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

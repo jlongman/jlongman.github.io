@@ -1,0 +1,35 @@
+---
+layout: post
+title: Moving targets
+categories:  MythTV
+published: 2006-08-26 03:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Moving targets</h1>
+					<p>After upgrading to Knoppmyth R5C7 we suddenly became aware of server load.  A 'Reschedule', which basically happens any time you touch the schedules or complete a recording, would cause stuttering in the front end.  Myth is a complicated enough system it could be any number of things.</p>
+	<p>One plan of attack though was to look at /proc/interrupts, and lo and behold – the analog capture card and the digital mpeg encoder card were on the same interrupt.  So I shuffled the cards a bit and bang, now one of the USB devices is on the same interrupt as the software encoder.  Oh well.  Hopefully it'll be better.</p>
+	<p>In the meantime I moved some videos and music off one drive onto the other, so I could reformat the other drive with more inodes.  I had messaged the myth-devel list suggesting perhaps their SCM drive was full, as I was given a disk full warning when checking out, despite having gigs of free space.  What a publicly embarassing way to learn out how useless that error message was.</p>
+	<p>That is all in preparation for my blinkenlights project.  Seeing as how mythtv release 0.20 should be happening soon, it's a good time to check out the source and make the mods.</p>
+
+
+ 			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Moving targets," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>08.26.06 / 3pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-395.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

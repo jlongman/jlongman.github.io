@@ -1,0 +1,44 @@
+---
+layout: post
+title: LibZFS on FreeBSD
+categories:  Code Geekery
+published: 2010-01-10 04:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>LibZFS on FreeBSD</h1>
+				<p><a href="https://web.archive.org/web/20121212013929/http://hudson.dev.java.net/">Hudson</a>, on Solaris, can use <a href="https://web.archive.org/web/20121212013929/http://en.wikipedia.org/wiki/ZFS">ZFS</a> to do things like fast workspace deletion and - much more interestingly - source code control management checkout replication for matrix jobs.  Considering we have a job with 20 matrix elements each requiring a git clone and checkout of a large repository this would shave a considerable amount of time off a build.  </p>
+<p>We also have a problem with our build setting the 'immutable' flag, which prevents Hudson from cleaning it properly.  If ZFS has immutable flags, deleting the zfs mount should work around the silly immutable flags.</p>
+<p><a href="https://web.archive.org/web/20121212013929/https://zfs.dev.java.net/">LibZFS</a> is a library for Java (that wraps <a href="https://web.archive.org/web/20121212013929/http://www.opensolaris.org/os/community/zfs/">libzfs</a>) that lets you manage ZFS, using native libraries.  ZFS has been ported to FreeBSD 7 and is more stable with FreeBSD 8.  (Aside:  if you are using FBSD 7 and ZFS and your NIC dies often, stop using ZFS or update to 8.  Seriously.). </p>
+<p>I downloaded the svn version of libzfs on a FreeBSD 8 box and it built fairly easily using maven.  The unit tests couldn't run, ld.so complaining about a missing symbal.  readelf –symbols showed uu_avl_create_pool being undefined.  Searching the net showed an actual definition that wasn't in a solaris source tree so it should be somewhere.  Grep'ing for the symbol in /lib showed it was in another .so that wasn't in the ld output.  </p>
+<p>It turns out LD_PRELOAD permits you to (among other things) link a file at runtime with a library that wasn't specified at compile-time.  On FreeBSD 8 I used:<br/>
+<code>LD_PRELOAD=/lib/libuutil.so.2:/lib/libnvpair.so.2</code><br/>
+This permitted the tests to run, with 7 Errors and 1 Failure.  A quick look at the code and it was trying to use a ZFS pool called 'rpool/khosuke'.  The only pools defined on my machine were 'storage'.   So I created a backing store (which must be larger than 64 MB) and then created a pool which pointed at that store.<br/>
+<code><br/>
+dd if=/dev/zero of=myfile bs=1024 count=100000<br/>
+zpool create rpool /home/longman/zpool.filestore<br/>
+</code><br/>
+I ran the tests and they all passed.  Huzzah!</p>
+<p>So we can now either install FBSD 8 on our build machine, and then either use a file-backed store (these are slave workspaces so we don't need great reliability out of them, a 'good enough' solution is acceptable) or get some relatively cheap drives for them.  </p>
+<p>A risk with going to FBSD 8 is that our build system might use elements from FreeBSD 8 and introducing that risk isn't up to me.  Hopefully a jail will isolate it properly, now that I think about it.  Or we can try running ZFS on FBSD 7 and hope that the nasty bugs don't crop up.  <img src="../gif/icon_sad.gif" alt=":-(" class="wp-smiley"/> </p>
+<p>I don't know whether hudson will automagically use libzfs on FreeBSD either, but that's pretty easy to find out.  Overall, pretty cool!</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "LibZFS on FreeBSD," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>01.10.10 / 4pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-52.html?cat=2" title="View all posts in Code Geekery" rel="category">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>

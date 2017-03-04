@@ -1,0 +1,77 @@
+---
+layout: post
+title: Backupstick for AppleTV?
+categories:  Gadget-o-rama MythTV
+published: 2008-01-26 09:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Backupstick for AppleTV?</h1>
+				<p>I spent the afternoon attempting to cobble up the backupstick - a usb-stick, no-installation backup of the AppleTV hard drive.  It's supposedly working right now, but I won't know the outcome for another hour or so... (based on other people's estimates.)</p>
+<p>The plan of attack was to use a USB hard drive with about 40 gigs on it, this one originally scavenged from my G4 Mini I believe.  I was looking at the AwkwardTV Patchstick's launchd file - which is the file executed on the AppleTV which runs ssh and installs plugins - and modifying the script so it did nothing, and should just boot print some pretty messages and exit.  This would be the entry point to execute the backup code, when I would get that far.</p>
+<p>By the way, prerequisite to all of this is having a copy of Tiger on an Intel Mac.  I'm running Leopard now but (as I've mentioned) I'd backed up onto another hard drive.  Gotta love that OSX creates bootable backups (via <a href="https://web.archive.org/web/20080405171629/http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html">SuperDuper</a>, IIRC).  The AppleTV OS is apparently closest to a 10.4 (.7?) version, and because of that we can copy binaries from Tiger to the booting memory stick.</p>
+<p>For whatever reason, neither the <a title="for installing linux" href="https://web.archive.org/web/20080405171629/http://www.mythic-beasts.com/resources/appletv/mb_boot_tv/stick.html">mb_boot_tv</a> bootstick nor a neutered version of the AwkwardTV Patchstick (recall I wanted to backup the drive unmodified) would boot from the USB harddrive.  (It might be worth looking at the source - the <a title="the source" href="https://web.archive.org/web/20080405171629/http://0xfeedbeef.com/appletv/usbboot">0xfeedbeef instructions</a> to see if there's some step that doesn't work well with hard drives.)</p>
+<p>Since I had the mb_boot_tv booting from a 2 Gig memory stick eventually I threw that in and with both scripts it WOULD boot, so there was something unbootably funky about the hard drive.  The symptoms, for reference, are: seeing the apple logo, an unusual flicker in the logo - probably a failure to boot - and then it boots to the normal AppleTV experience. (wee! but not what I was looking for).</p>
+<p>With the memory stick it really is as interesting as modifying the createPatchstick script, and modifying the launchd script.  I poked around by listing /dev/disk* on the AppleTV, then modified the createPatchstick script to add dd and gzip.  The problem is that the 2 Gig memory stick isn't big enough to hold the compressed image - most approximations put it at 2.4 Gig.  If I had a 4 Gig stick it wouldn't be an issue.</p>
+<p>Fortunately the other hard drive is still usable!  I just boot from the usb stick and then write the image to the hard drive.  I'll have to put together the scripts online if anyone else is interested.</p>
+<p>Ha!  Looks like I forgot one detail - something in the changes I've done causes it to reboot endlessly which means it might have overwritten the disk image since I missed the reboot.  Add a simple test to see if the file exists and boom.  I have  a 2.4 Gig image of the disk.  The next question is the best way to test it.</p>
+<p>Cause a backup don't mean nothing unless you know it works.</p>
+<p>The next steps beyond validation are:</p>
+<ul>
+<li>installing linux,</li>
+<li>getting a working MythBuntu system on the hard drive, then</li>
+<li>creating the netbootable version of that image, then</li>
+<li>restoring the pristine AppleTV OS and booting using the mb_boot_tv method.</li>
+</ul>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Backupstick for AppleTV?," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>01.26.08 / 9pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index81ea-259.html?cat=3" title="View all posts in Gadget-o-rama" rel="category">Gadget-o-rama</a>,  <a href="indexc728-239.html?cat=7" title="View all posts in MythTV" rel="category">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-28498">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20080405171629/http://pintday.org/kjell" rel="external nofollow">kj</a></span>
+				<span class="date">01.28.08 / 7pm</span>
+			</cite>
+			<div class="content">
+								<p>re: bootable backups.</p>
+<p>I thought SuperDuper didn't work with Leopard?</p>
+<p>Fortunately, I think Carbon Copy Cloner does. I guess I'll know soon, as I'm going try to get both a bootable backup, and a leopard install going on this here external drive.</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-28501">
+			<cite>
+				<span class="author"><a href="index-366.html" rel="external nofollow">j2</a></span>
+				<span class="date">01.28.08 / 7pm</span>
+			</cite>
+			<div class="content">
+								<p>I was backing up Tiger when I used SuperDuper - Leopard doesn't run on the AppleTV.</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

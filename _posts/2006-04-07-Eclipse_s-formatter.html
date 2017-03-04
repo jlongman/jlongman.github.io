@@ -1,0 +1,102 @@
+---
+layout: post
+title: Eclipse's formatter
+categories:  Code Geekery
+published: 2006-04-07 11:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Eclipse's formatter</h1>
+				<p>Eclipse's formatter has been made standalone in 3.2M6 - see <a href="https://web.archive.org/web/20070207231715/http://download.eclipse.org/eclipse/downloads/drops/S-3.2M6-200603312000/eclipse-news-M6.html">here</a>.</p>
+<blockquote><p>Along with the batch compiler, one can now use the Java <em>code formatter</em>, read and disassemble .class files, and create DOM ASTs, all without running the Eclipse Platform. </p></blockquote>
+<p>(Emphasis mine)</p>
+<p>One less barrier for a heterogenous IDE environment.  The problem with running IntelliJ IDEA with Eclipse in a common environment is that the code formatters don't produce results that <a href="https://web.archive.org/web/20070207231715/http://en.wikipedia.org/wiki/Diff">diff</a> well.  Then when you try to diff/merge/compare, a lot of tools aren't smart enough to figure out the code changes.  And even if they are, Eclipse for example shows differences in the <abbr title="Abstract Symbol Tree">AST</abbr> there's still a lot of noise in text represention - especially since you rarely edit the AST...</p>
+<p>Of course, you can use any code formatter in a pre-checkin or checkin-trigger to acheive the same results, something Roland and I did at Discreet with ClearCase back in 19-ought-8 (ok, 1998), but if you have a majority eclipse environment (like Nic's <a href="https://web.archive.org/web/20070207231715/http://www.radialpoint.com/">employer</a>) then this will mean adoption is painless for the majority.
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Eclipse's formatter," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>04.07.06 / 11am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="index3f7b-539.html?cat=2" title="View all posts in Code Geekery" rel="category tag">Code Geekery</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
+<ol xmlns="http://www.w3.org/1999/xhtml" id="comments">
+
+			<li id="comment-5881">
+			<cite>
+				<span class="author"><a href="https://web.archive.org/web/20070207231715/http://raz.cx/" rel="external nofollow">Roland Turner</a></span>
+				<span class="date">04.08.06 / 5am</span>
+			</cite>
+			<div class="content">
+								<p>If memory serves, the pre-checkin formatting wasn't a great success. While it solved the different-styles problem, my recollection is that code's layout gradually devolved to a minimally-format-rules-compliant rubble. But maybe I'm exagerating.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-5897">
+			<cite>
+				<span class="author">Nicolas</span>
+				<span class="date">04.10.06 / 10am</span>
+			</cite>
+			<div class="content">
+								<p>Thanks for the tip, but it won't do a lot to help me because we are not using formatting in Eclipse already because most find that the Eclipse formatter leaves a couple of defects and if somebody forgets to run it, it still screws up diff. Also some people use emacs or vi in unix and these do not offer proper formatting.</p>
+<p>I take good note though, it might be handy in the future <img src="../gif/icon_wink-28.gif" alt=";-)" class="wp-smiley"/>
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-5907">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">04.11.06 / 2pm</span>
+			</cite>
+			<div class="content">
+								<p>Roland, I'm not recalling what you mean - but I'm not sure it matters.  </p>
+<p>Providing you can meaningfully resolve merge conflicts then I should think that would be sufficient.</p>
+<p>And my assumption is predicated with an acceptable format by the formatter.  Which I think modern formatters are capable of producing. </p>
+<p>Indeed, my experience is that the chief problem between the IntelliJ and Eclipse formatters is that there are SO MANY options it gets frustrating to SPECIFY the possible differences.  Not support them all.  </p>
+<p>So the software developers just chose a (non-overlapping) subset.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+			<li id="comment-5908">
+			<cite>
+				<span class="author">j2</span>
+				<span class="date">04.11.06 / 2pm</span>
+			</cite>
+			<div class="content">
+								<p>Nic, A check-in trigger ensures that the formatter is always run (cvsNT, I think, supports this), a checkout-trigger (clearcase supports this) will ensure it is in you fave format, neither require that your client is capable of running them.</p>
+<p>But it doesn't matter, cause the formatter is Java and WORA, including shell scripts, emacs launched, etc.</p>
+<p>I would think even if someone forgets to run the formatter, assuming no checkin-trigger, the majority of merge cases would still be formatted resulting in easier merging.
+</p>
+			</div>
+			<div class="clear"/>
+		</li>
+
+
+	
+	
+	</ol>

@@ -1,0 +1,37 @@
+---
+layout: post
+title: Working weekend
+categories:  MythTV
+published: 2007-05-13 07:00:00
+---
+<div xmlns="http://www.w3.org/1999/xhtml" id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h1>Working weekend</h1>
+				<p>I spent most of the weekend working, but today I was a bit like jello left in the sun too long, so I did some cleaning and upgraded the MythTV frontend (only, not the recording bit) to <a title="the main page" href="https://web.archive.org/web/20070808084941/http://www.mysettopbox.tv/">R5F1</a>, so hot off the presses there's no changelog yet.</p>
+<p>Everything went mostly well - I had to play with the mixer a bit to get sound back, basically unmute and turn up the Front channel.  Then get <a title="a convenient wrapper" href="https://web.archive.org/web/20070808084941/http://www.mythtv.org/wiki/index.php/Mythwelcome">mythwelcome</a> re-configured for startup, and set it up so I can shut down the box with the remote (i.e. add the mythtv user to the sudoer list with the shutdown command).</p>
+<p>Everything seems slightly nicer.  Tho, my nvidia on-board videocard wasn't happy decoding live HDTV so I had to go back to software decoding - watch the CPU jump from 20% usage to 68% usage.  I'll have to see if I had a tainted driver in there before - I didn't even bother checking here yet tho.</p>
+<p>Finally, while watching the start of the Detroit-Anaheim hockey game, I thought I'd see if the compiler or headers would be <a title="past frustrations..." href="index486a-8.html?p=287">anymore</a> compatible with my Antec Fusion VFD. I started downloading the <a href="https://web.archive.org/web/20070808084941/http://lcdproc.omnipotent.net/">lcdproc</a> sources in order to build it, when it occurred to me this new release may have it already.</p>
+<p><a title="spiffy!" href="https://web.archive.org/web/20070808084941/http://www.mythtv.org/wiki/index.php/LCDproc">This</a> wiki page detailed the changes I needed to make to LCDd.conf (which I think was <em>my</em> old version, as it was missing the trailing slash referenced in the comments!?), modprobe lirc_imon, echo 'woo!' &gt; /dev/lirc0 and bang, it worked.  Cool!  (Yes, I did it in that order, but there's no point in editing LCDd.conf until the echo works.)</p>
+<p>Now start LCDd, get the welcome message, enter the MythTV setup, turn it on and BOOM! it works.</p>
+<p>Cool.  Of course, it'd be nice if the machine didn't need to be on in order to show me what the backend is doing.  The <a href="https://web.archive.org/web/20070808084941/http://www.slimdevices.com/">SqueezeBox</a> looks like it could do that...
+</p>
+			</div>
+			<hr class="hide"/>
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<p>You"re currently reading "Working weekend," an entry on a crick in the net</p>
+					<dl>
+						<dt>Published:</dt>
+						<dd>05.13.07 / 7pm</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="indexc728-281.html?cat=7" title="View all posts in MythTV" rel="category tag">MythTV</a></dd>
+					</dl>
+									</div>
+			</div>
+			<div class="clear"/>
+		</div>
+	</div>
