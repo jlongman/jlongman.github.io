@@ -2,7 +2,7 @@
 layout: post
 title:  "More ChromeCast control from the Pi"
 date:   2017-04-01 20:59:01 -0500
-categories: Code Geekery
+categories: Code Geekery ChromeCast Pi HDMI-CEC Python InfraRed
 ---
 
 Already useful!  This article details Button to ChromeCast, and simple IR blasting.  A later article will talk about more complex IR blasting that integrates the ChromeCast.

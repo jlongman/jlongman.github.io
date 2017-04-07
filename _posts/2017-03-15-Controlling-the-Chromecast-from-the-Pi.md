@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Chromecasting simple pages"
+title:  "Controlling the ChromeCast from the Pi"
 date:   2017-03-07 18:16:01 -0500
 categories: Code Geekery
 ---
